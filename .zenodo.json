@@ -1,0 +1,26 @@
+{
+  "title": "SolutionReview: verifiability-typed review knowledge with human-gated evolution",
+  "upload_type": "software",
+  "description": "<p>Artifact for the paper <em>Verifiability-Typed Review Knowledge with Human-Gated Evolution for LLM-Assisted Review of Technical Solution Proposals</em> (submitted to <em>Computers</em>, MDPI).</p><p>The system is a plugin for an open-source conversational agent harness that reviews technical solution proposals. Each review rule carries a <strong>type</strong> that decides who may conclude it: <em>hard</em> rules are decided by deterministic verifiers that produce located evidence (including absence records a model may never assert); <em>hybrid</em> rules let verifiers locate candidate spans while the model judges only inside them, enforced by a tool-side evidence gate; <em>soft</em> rules only raise items for judgement. A deterministic policy derives the suggested verdict, and only the expert writes the final one. Expert decisions form an audited learned layer that may retune parameters and collect phrasing exemplars but never promotes a rule's tier.</p><p>The release contains the plugin source, the 28-rule package with its cue lexicon, the 100-proposal synthetic corpus with 253 planted defects and ground truth, the corpus self-check, the ablation runner, and the nine published evaluation runs (three configurations × three repetitions) that back every number in the paper.</p>",
+  "creators": [
+    {"name": "Author A"},
+    {"name": "Author B"},
+    {"name": "Author C"},
+    {"name": "Author D"},
+    {"name": "Author E"},
+    {"name": "Author F"}
+  ],
+  "license": "MIT",
+  "version": "1.0.0",
+  "language": "eng",
+  "keywords": [
+    "large language models",
+    "document review",
+    "human-in-the-loop",
+    "neuro-symbolic verification",
+    "evidence grounding",
+    "knowledge evolution",
+    "reproducibility"
+  ],
+  "access_right": "open"
+}
