@@ -1,38 +1,23 @@
-# Release checklist (what a human has to do)
+# Release status
 
-Two steps need account access; everything else is prepared.
+* **GitHub repository:** created — <https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge>
+  (`main` pushed, tag `v1.0.0` pushed).
+* **Zenodo:** still needs one click — publishing the GitHub release mints the DOI.
 
-## 1. Create the GitHub repository (1 click)
+## What is left (1 click, needs the Zenodo-linked GitHub account)
 
-Option A — web: <https://github.com/new>, name `hark`, owner `yyyyyyzt`,
-**empty** (no README, no licence), visibility public.
+1. Open <https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge/releases/new?tag=v1.0.0>
+2. Title: `HARK v1.0.0 — artifact for the Computers submission`
+3. Paste the body from `paper/data/public/RELEASE_NOTES.md` (or just `git log --oneline` output).
+4. **Publish release.** Zenodo archives the tag and mints a DOI within a minute; the DOI appears at
+   <https://zenodo.org/account/settings/github/> next to the repository, and as a badge on the GitHub release.
+5. Send the DOI back: it goes into `\dataavailability` of `paper/mdpi-article/main.tex` and the badge line
+   of `README.md` (both currently carry the literal string `PLACEHOLDER`).
 
-Option B — give the agent a token with `repo` scope and it creates the repo and pushes:
+## Still to fill before submission (human data)
 
-```bash
-curl -s -H "Authorization: token $GH_TOKEN" https://api.github.com/user/repos \
-  -d '{"name":"hark","private":false,"description":"Artifact: verifiability-typed review knowledge for LLM-assisted solution review"}'
-```
-
-Then, from this directory:
-
-```bash
-git push -u origin main --tags          # origin = git@github.com:yyyyyyzt/hark.git
-```
-
-## 2. Mint the DOI on Zenodo (2 clicks, needs the Zenodo login)
-
-1. Log in at <https://zenodo.org> with the GitHub account (Settings → GitHub → grant access).
-2. In <https://zenodo.org/account/settings/github/>, flip the switch for `yyyyyyzt/hark`.
-3. On GitHub, publish a release `v1.0.0` (or run `gh release create`); Zenodo archives that release
-   and mints a DOI within a minute. Copy the DOI.
-4. Paste the DOI into the paper (`\dataavailability`) and into the badge line of `README.md`.
-
-Alternative without GitHub: Zenodo → *New upload* → drop `hark-v1.0.0.tar.gz`,
-metadata is already in `.zenodo.json`, then *Publish*.
-
-## 3. Fill the placeholders in the paper
-
-* authors A–F → real names, one affiliation, six e-mails, six ORCIDs;
-* `Data Availability` → repository URL + DOI;
-* `CITATION.cff` / `.zenodo.json` → same names and ORCIDs.
+* authors A–F → real names, one affiliation, six e-mails, six ORCIDs (`\Author`, `\address`, `\corres`);
+* `CRediT` block in `Author Contributions` (currently per-role placeholders);
+* `Funding` line if a grant applies (currently "no external funding");
+* `CITATION.cff` / `.zenodo.json` → the same names and ORCIDs;
+* Suggested reviewers: not needed, the field can stay empty in the MDPI form.

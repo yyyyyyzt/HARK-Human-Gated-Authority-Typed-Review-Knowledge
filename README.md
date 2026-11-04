@@ -12,6 +12,11 @@ absence record. An expert decides every finding in the conversation; each decisi
 persistent learned layer that may retune parameters and collect phrasing exemplars but never changes
 a rule's type or promotes it to a higher-authority tier.
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PLACEHOLDER.svg)](https://doi.org/10.5281/zenodo.PLACEHOLDER)
+
+**Repository:** <https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge> ·
+**Release:** `v1.0.0` · **DOI:** pending (minted by Zenodo on the first release)
+
 ## What is in this repository
 
 | Path | Contents |
@@ -21,6 +26,7 @@ a rule's type or promotes it to a higher-authority tier.
 | `paper/data/public/synthetic/` | the evaluation corpus: 100 proposals, 253 planted defects, ground truth, generator manifest and the generator's self-check output |
 | `paper/data/public/eval-runs/` | the nine published runs (three configurations × three repetitions) as raw JSON, plus `summary.md` and `skipped.json` |
 | `plugins/hark/scripts/eval/` | corpus generator, ablation runner, anonymiser |
+| `paper/mdpi-article/` | the manuscript source (`main.tex`, `bib.tex`, MDPI class files) and the compiled PDF |
 
 ## Reproduce the results
 
