@@ -11,7 +11,7 @@ entered by hand.
   `flag` judge, so the whole evaluation is a pure function of the corpus and the rule package.
 
 ```bash
-cd plugins/arbiter
+cd plugins/hark
 pnpm install --ignore-scripts
 pnpm run build          # produces lib/, which the evaluation imports
 ```
@@ -53,7 +53,7 @@ expert feedback (`S-memory`). Supplying an adapter is a matter of implementing t
 
 | Paper element | Source |
 |---|---|
-| Table 4 (package composition) | `plugins/arbiter/rules/capability-open-access.rules.yaml` |
+| Table 4 (package composition) | `plugins/hark/rules/capability-open-access.rules.yaml` |
 | Table 8, Figure 3 (issue- and verdict-level results) | `eval-runs/*.json` → `metrics` |
 | Table 9 (per tier and severity) | `eval-runs/*.json` → `perRule` grouped by `tier` / `severity` |
 | Table 10, Figure 4 (per planted kind) | `synthetic/selfcheck.json` → `detection`, and `perSolution` |
@@ -63,8 +63,8 @@ expert feedback (`S-memory`). Supplying an adapter is a matter of implementing t
 ## 6. Pilot statistics
 
 The five internal runs reported in the pilot subsection live in the harness' storage domain
-(`arbiter.json`: tables `reviews`, `issues`, `feedback`, `exemplars`), not in this
+(`hark.json`: tables `reviews`, `issues`, `feedback`, `exemplars`), not in this
 repository, because the proposals are internal documents. The aggregate counts quoted in the paper
 (58 findings, 40 verifier-located, 12 model-judged, 6 operator-added, 3 gate refusals, 18 decisions,
 13 rules with statistics, 21 exemplars) are reproducible from that file with any JSON reader; the
-schema is documented in `plugins/arbiter/docs/design.md` §6–§7.
+schema is documented in `plugins/hark/docs/design.md` §6–§7.
