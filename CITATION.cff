@@ -1,6 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this artifact, please cite the paper and this repository."
 repository-code: "https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge"
+doi: "10.5281/zenodo.23955205"
 url: "https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge"
 title: "HARK: authority-typed review knowledge with human-gated evolution"
 abstract: >-

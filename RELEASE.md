@@ -1,18 +1,10 @@
 # Release status
 
-* **GitHub repository:** created — <https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge>
-  (`main` pushed, tag `v1.0.0` pushed).
-* **Zenodo:** still needs one click — publishing the GitHub release mints the DOI.
-
-## What is left (1 click, needs the Zenodo-linked GitHub account)
-
-1. Open <https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge/releases/new?tag=v1.0.0>
-2. Title: `HARK v1.0.0 — artifact for the Computers submission`
-3. Paste the body from `paper/data/public/RELEASE_NOTES.md` (or just `git log --oneline` output).
-4. **Publish release.** Zenodo archives the tag and mints a DOI within a minute; the DOI appears at
-   <https://zenodo.org/account/settings/github/> next to the repository, and as a badge on the GitHub release.
-5. Send the DOI back: it goes into `\dataavailability` of `paper/mdpi-article/main.tex` and the badge line
-   of `README.md` (both currently carry the literal string `PLACEHOLDER`).
+* **GitHub repository:** <https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge>
+* **Release `v1.0.0`:** published; **DOI `10.5281/zenodo.23955205`** (all-version DOI `10.5281/zenodo.23955204`),
+  badge `https://zenodo.org/badge/1445355414.svg`.
+* The DOI is already wired into `\dataavailability` of `paper/mdpi-article/main.tex`, the README badge and
+  `CITATION.cff`, so nothing else is pending on the artifact side.
 
 ## Still to fill before submission (human data)
 
