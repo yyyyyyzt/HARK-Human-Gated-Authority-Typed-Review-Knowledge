@@ -1,7 +1,7 @@
 // ReviewStore: the one owner of the `hark` domain handle. Pure engine functions do the
 // judging; this class only sequences reads/writes (design.md §7–§8, review-protocol.md §3, §5).
 import { createHash } from 'node:crypto';
-import { candidatesFrom, check as runCheck, computeVerdict, gate, HardRuleVerifierOwnedError, mergeRules, opinionFileName, parseMarkdown, parseRuleDraft, recall, renderOpinion, RulePackError, trimExemplars, } from '../engine/index.js';
+import { candidatesFrom, check as runCheck, computeVerdict, gate, HardRuleVerifierOwnedError, mergeRules, opinionFileName, parseMarkdown, parseRuleDraft, pointText, recall, renderOpinion, RulePackError, trimExemplars, } from '../engine/index.js';
 import { flattenHeadings } from '../engine/parse/markdown.js';
 import { candidateKey, exemplarKey, feedbackKey, isClosed, issueKey, newReviewId, } from '../store/domain.js';
 import { ReviewToolError } from './errors.js';
@@ -92,6 +92,7 @@ const byCreated = (a, b) => a.createdAt < b.createdAt ? -1 : a.createdAt > b.cre
 function isRealOverride(rec) {
     return rec.status !== undefined
         || rec.severity !== undefined
+        || rec.channel !== undefined
         || rec.suggestion !== undefined
         || rec.draft !== undefined
         || (rec.params !== undefined && Object.keys(rec.params).length > 0);
@@ -663,7 +664,9 @@ export class ReviewStore {
         }
         const doc = this.docOf(review);
         const { rules, lexicon, version } = this.effectiveRules();
-        const report = runCheck(doc, rules, lexicon);
+        const dimensions = this.config.reviewDimensions ?? [];
+        const selected = dimensions.length > 0 ? rules.filter((r) => dimensions.includes(r.dimension)) : rules;
+        const report = runCheck(doc, selected, lexicon);
         const issues = this.domain.table('issues');
         for (const old of this.issuesOf(reviewId)) {
             if (old.origin === 'verifier')
@@ -750,6 +753,10 @@ export class ReviewStore {
         const review = this.requireReview(reviewId);
         const issues = this.issuesOf(reviewId);
         const verdict = this.verdictOf(reviewId);
+        const ruleChannel = new Map(this.effectiveRules().rules.map((r) => [r.id, r.channel]));
+        const channelOf = (issue) => (issue.ruleId ? ruleChannel.get(issue.ruleId) ?? 'opinion' : 'opinion');
+        const opinionIssues = issues.filter((i) => channelOf(i) === 'opinion').map((i) => i.issueId);
+        const checklistIssues = issues.filter((i) => channelOf(i) === 'checklist').map((i) => i.issueId);
         const counts = {
             ...verdict.counts,
             pending: issues.filter((i) => i.status === 'pending').length,
@@ -776,6 +783,8 @@ export class ReviewStore {
             summary,
             ...(review.finalVerdict ? { finalVerdict: review.finalVerdict } : {}),
             issues,
+            opinionIssues,
+            checklistIssues,
             checklist,
             counts,
             checklistCounts,
@@ -913,6 +922,24 @@ export class ReviewStore {
                 });
                 return done({ issue: record });
             }
+            case 'adopt_checklist': {
+                const ruleChannel = new Map(this.effectiveRules().rules.map((r) => [r.id, r.channel]));
+                const isChecklist = (issue) => (issue.ruleId ? ruleChannel.get(issue.ruleId) === 'checklist' : false);
+                const affected = [];
+                const remainingOpinion = [];
+                for (const issue of this.issuesOf(reviewId)) {
+                    if (issue.status === 'confirmed' && isChecklist(issue)) {
+                        await this.setIssueStatus(issue, 'adopted');
+                        await this.writeFeedback(review, issue, 'adopt', {});
+                        affected.push(issue.issueId);
+                    }
+                    else if (issue.status === 'confirmed' || issue.status === 'pending') {
+                        if (!isChecklist(issue))
+                            remainingOpinion.push(issue.issueId);
+                    }
+                }
+                return done({ affected, remainingOpinion });
+            }
             case 'adopt_rest': {
                 const affected = [];
                 const remainingPending = [];
@@ -1004,6 +1031,14 @@ export class ReviewStore {
         const aiVerdictAtFinalize = this.verdictOf(reviewId).verdict;
         const finalizedAt = this.now().toISOString();
         const version = review.versions.length + 1;
+        const ruleChannel = new Map(this.effectiveRules().rules.map((r) => [r.id, r.channel]));
+        const checklistIssue = (issue) => (issue.ruleId ? ruleChannel.get(issue.ruleId) === 'checklist' : false);
+        const annex = [
+            ...new Set(issues
+                .filter((issue) => (issue.status === 'adopted' || issue.status === 'rewritten') && checklistIssue(issue))
+                .map((issue) => `${pointText(issue)}。`)
+                .filter((text) => text !== '。')),
+        ];
         const content = renderOpinion({
             reviewId,
             title: review.title,
@@ -1011,7 +1046,8 @@ export class ReviewStore {
             finalizedAt,
             finalVerdict: review.finalVerdict,
             aiVerdictAtFinalize,
-            issues,
+            issues: issues.filter((issue) => !checklistIssue(issue)),
+            ...(annex.length > 0 ? { annex } : {}),
             counts,
         });
         // File first, then the record, then memory (design.md §12): a failed write leaves the domain untouched.

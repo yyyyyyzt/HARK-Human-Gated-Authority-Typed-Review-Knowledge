@@ -72,6 +72,7 @@ export const RuleSchema = z.object({
     dimension: z.enum(['capacity', 'security', 'interface', 'channel', 'data_sync', 'config', 'monitoring', 'documentation']),
     severity: z.enum(['blocker', 'major', 'minor']),
     tier: z.enum(['hard', 'hybrid', 'soft']),
+    channel: z.enum(['opinion', 'checklist']).default('opinion'),
     question: z.string().min(1),
     rationale: z.string().min(1),
     suggestion: z.string().min(1),
@@ -176,6 +177,8 @@ function checkTier(rule) {
     const fail = (field, msg) => {
         throw new RulePackError(`${rule.id}: ${msg}`, rule.id, field);
     };
+    if (rule.channel === 'checklist' && rule.severity === 'blocker')
+        fail('channel', 'checklist rules must not use blocker severity');
     if (rule.tier === 'soft') {
         if (rule.verifier)
             fail('verifier', 'soft rules must not declare a verifier');
@@ -370,6 +373,17 @@ export function mergeRules(shipped, overrides) {
             target.status = ov.status;
         if (ov.severity !== undefined)
             target.severity = ov.severity;
+        if (ov.channel !== undefined) {
+            if (target.channel === 'checklist' && ov.channel === 'opinion') {
+                warnings.push(`${ov.ruleId}: channel override checklist → opinion ignored`);
+            }
+            else if (ov.channel === 'checklist' && target.severity === 'blocker') {
+                warnings.push(`${ov.ruleId}: channel override ignored (blocker rules cannot be checklist)`);
+            }
+            else {
+                target.channel = ov.channel;
+            }
+        }
         if (ov.suggestion !== undefined)
             target.suggestion = ov.suggestion;
         if (ov.params)

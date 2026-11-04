@@ -1,9 +1,13 @@
 const SEVERITY_RANK = { blocker: 0, major: 1, minor: 2 };
 const EMPTY_PASS_SENTENCE = '按当前方案技术路线开展。';
 const escapeCell = (s) => s.replace(/\|/g, '\\|');
-function pointText(issue) {
-    const text = issue.status === 'rewritten' && issue.rewriteText?.trim() ? issue.rewriteText : issue.suggestion;
+function pointBody(text) {
     return text.trim().replace(/[。；;，,.!！\s]+$/u, '');
+}
+/** Suggestion text of one issue (rewrite wins), without its trailing punctuation. */
+export function pointText(issue) {
+    const text = issue.status === 'rewritten' && issue.rewriteText?.trim() ? issue.rewriteText : issue.suggestion;
+    return pointBody(text);
 }
 function finishSentence(text) {
     return `${text.replace(/^(建议)+建议/u, '建议')}。`;
@@ -40,7 +44,8 @@ export function opinionPoints(issues) {
 }
 export function renderOpinion(input) {
     const points = opinionPoints(input.issues);
-    if (points.length === 0 && input.finalVerdict === '通过')
+    const annex = (input.annex ?? []).map((text) => `${pointBody(text)}。`).filter((text) => text !== '。');
+    if (points.length === 0 && annex.length === 0 && input.finalVerdict === '通过')
         points.push(EMPTY_PASS_SENTENCE);
     const lines = [
         '# 技术方案预审意见',
@@ -55,7 +60,13 @@ export function renderOpinion(input) {
         '',
     ];
     if (points.length) {
+        if (annex.length)
+            lines.push('一、问题与整改意见', '');
         lines.push(points.map((p, i) => `（${i + 1}）${p}`).join('\n'), '');
+    }
+    if (annex.length) {
+        lines.push(points.length ? '二、需补正事项' : '需补正事项', '');
+        lines.push(annex.map((a, i) => `（${i + 1}）${a}`).join('\n'), '');
     }
     const c = input.counts;
     lines.push('---', `附：AI 预审建议结论「${input.aiVerdictAtFinalize}」；复核采纳 ${c.adopt} 条、驳回 ${c.reject} 条、改写 ${c.rewrite} 条、专家新增 ${c.add} 条。`, '');

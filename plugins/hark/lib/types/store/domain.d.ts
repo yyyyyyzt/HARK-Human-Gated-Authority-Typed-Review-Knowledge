@@ -341,6 +341,10 @@ export declare const RuleOverrideRecordSchema: z.ZodObject<{
         major: "major";
         minor: "minor";
     }>>;
+    channel: z.ZodOptional<z.ZodEnum<{
+        opinion: "opinion";
+        checklist: "checklist";
+    }>>;
     suggestion: z.ZodOptional<z.ZodString>;
     params: z.ZodOptional<z.ZodObject<{
         families: z.ZodOptional<z.ZodObject<{
@@ -381,6 +385,10 @@ export declare const RuleOverrideRecordSchema: z.ZodObject<{
             hybrid: "hybrid";
             soft: "soft";
         }>;
+        channel: z.ZodDefault<z.ZodEnum<{
+            opinion: "opinion";
+            checklist: "checklist";
+        }>>;
         question: z.ZodString;
         rationale: z.ZodString;
         suggestion: z.ZodString;

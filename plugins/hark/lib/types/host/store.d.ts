@@ -67,6 +67,10 @@ export interface StatusResult {
     summary: string;
     finalVerdict?: Verdict;
     issues: IssueRecord[];
+    /** issueId list of opinion-channel issues (items without a ruleId always belong here). */
+    opinionIssues: string[];
+    /** issueId list of checklist-channel issues. */
+    checklistIssues: string[];
     checklist: ChecklistEntry[];
     counts: {
         blocker: number;
@@ -81,7 +85,7 @@ export interface StatusResult {
     };
     checklistCounts: Record<ChecklistEntry['status'], number>;
 }
-export type DecideAction = 'adopt' | 'reject' | 'rewrite' | 'add' | 'adopt_rest' | 'set_reviewer' | 'set_final_verdict' | 'discard';
+export type DecideAction = 'adopt' | 'reject' | 'rewrite' | 'add' | 'adopt_rest' | 'adopt_checklist' | 'set_reviewer' | 'set_final_verdict' | 'discard';
 export interface DecideInput {
     action?: DecideAction | undefined;
     answer?: string | undefined;
@@ -100,6 +104,8 @@ export interface DecideResult {
     affected?: string[];
     /** adopt_rest only: pending issues left for one-by-one confirmation. */
     remainingPending?: string[];
+    /** adopt_checklist only: opinion-channel issues still awaiting a decision. */
+    remainingOpinion?: string[];
     aiVerdict: Verdict;
     finalVerdict?: Verdict;
     reviewer?: string;

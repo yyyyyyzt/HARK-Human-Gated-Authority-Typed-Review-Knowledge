@@ -10,6 +10,8 @@ export interface Range {
 export type Verdict = '通过' | '建议整改' | '不通过';
 export type Severity = 'blocker' | 'major' | 'minor';
 export type Tier = 'hard' | 'hybrid' | 'soft';
+/** Output channel: opinion = numbered clauses; checklist = 「需补正事项」 annex eligible for adopt_rest. */
+export type Channel = 'opinion' | 'checklist';
 export type Dimension = 'capacity' | 'security' | 'interface' | 'channel' | 'data_sync' | 'config' | 'monitoring' | 'documentation';
 export interface HeadingNode {
     depth: number;
@@ -222,6 +224,7 @@ export interface Rule {
     dimension: Dimension;
     severity: Severity;
     tier: Tier;
+    channel: Channel;
     question: string;
     rationale: string;
     suggestion: string;
@@ -270,6 +273,7 @@ export interface RuleOverride {
     ruleId: string;
     status?: RuleStatus;
     severity?: Severity;
+    channel?: Channel;
     suggestion?: string;
     params?: {
         families?: {
@@ -371,6 +375,8 @@ export interface OpinionInput {
     finalVerdict: Verdict;
     aiVerdictAtFinalize: Verdict;
     issues: Issue[];
+    /** Sentences for the 「需补正事项」 annex (checklist-channel items), rendered after the numbered clauses. */
+    annex?: string[];
     counts: {
         adopt: number;
         reject: number;

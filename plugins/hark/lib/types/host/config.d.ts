@@ -6,6 +6,8 @@ export interface ReviewConfig {
     outputDir: string;
     /** Number of confirmed `minor` issues that turns 通过 into 建议整改. */
     minorThreshold: number;
+    /** Rule dimensions this reviewer subscribes to; empty = all dimensions. */
+    reviewDimensions: string[];
     /** Maximum issues per `ask_user_question` batch during review. */
     askBatchSize: number;
     /** `memory_recall.warn` fires when reject / shown reaches this ratio… */

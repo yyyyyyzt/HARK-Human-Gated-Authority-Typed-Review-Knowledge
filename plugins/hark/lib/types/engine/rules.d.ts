@@ -28,6 +28,10 @@ export declare const RuleSchema: z.ZodObject<{
         hybrid: "hybrid";
         soft: "soft";
     }>;
+    channel: z.ZodDefault<z.ZodEnum<{
+        opinion: "opinion";
+        checklist: "checklist";
+    }>>;
     question: z.ZodString;
     rationale: z.ZodString;
     suggestion: z.ZodString;
