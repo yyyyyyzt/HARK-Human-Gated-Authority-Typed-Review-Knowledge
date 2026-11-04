@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this artifact, please cite the paper and this repository."
-title: "SolutionReview: verifiability-typed review knowledge with human-gated evolution"
+title: "ARBITER: authority-typed review knowledge with human-gated evolution"
 abstract: >-
   Plugin and evaluation artifact for LLM-assisted preliminary review of technical solution
   proposals: verifiability-typed rules (hard/hybrid/soft), a tool-side evidence gate, a
