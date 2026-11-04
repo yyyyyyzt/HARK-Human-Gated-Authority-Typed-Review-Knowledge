@@ -12,8 +12,6 @@ absence record. An expert decides every finding in the conversation; each decisi
 persistent learned layer that may retune parameters and collect phrasing exemplars but never changes
 a rule's type or promotes it to a higher-authority tier.
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PLACEHOLDER.svg)](https://doi.org/10.5281/zenodo.PLACEHOLDER)
-
 **Repository:** <https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge> ·
 **Release:** `v1.0.0` · **DOI:** pending (minted by Zenodo on the first release)
 
