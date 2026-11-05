@@ -5,6 +5,9 @@ import { candidatesFrom, check as runCheck, computeVerdict, gate, HardRuleVerifi
 import { flattenHeadings } from '../engine/parse/markdown.js';
 import { candidateKey, exemplarKey, feedbackKey, isClosed, issueKey, newReviewId, } from '../store/domain.js';
 import { ReviewToolError } from './errors.js';
+/** Actions that widen or narrow what a rule may settle on its own. */
+const AUTHORITY_ACTIONS = new Set(['disable', 'enable', 'set_severity']);
+const AUTHORITY_BASIS_MIN = 8;
 const SEVERITIES = ['blocker', 'major', 'minor'];
 export const SUGGESTION_MAX = 500;
 const VERDICTS = ['通过', '建议整改', '不通过'];
@@ -206,10 +209,15 @@ export class ReviewStore {
         const at = this.now().toISOString();
         const overrides = this.domain.table('rule_overrides');
         const candidates = this.domain.table('rule_candidates');
+        const basisQuote = typeof input.basis?.quote === 'string' ? input.basis.quote.replace(/\s+/g, ' ').trim() : '';
+        if (AUTHORITY_ACTIONS.has(input.action) && input.via !== 'console' && basisQuote.length < AUTHORITY_BASIS_MIN) {
+            throw new ReviewToolError('AUTHORITY_UNCONFIRMED', `rules_propose(${input.action}) 改动规则的裁决权，必须附 basis.quote（专家原话，去空白后 ≥${AUTHORITY_BASIS_MIN} 字）；未附则不改，先向专家确认原话。`);
+        }
         const audit = (field, from, to) => ({
             who,
             at,
             ...(input.reviewId ? { reviewId: input.reviewId } : {}),
+            ...(basisQuote ? { basis: basisQuote } : {}),
             change: { field, from, to },
         });
         const upsert = async (ruleId, mutate) => {

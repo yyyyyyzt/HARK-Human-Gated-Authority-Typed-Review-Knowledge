@@ -214,6 +214,13 @@ export interface ProposeInput {
     draft?: string | undefined;
     who?: string | undefined;
     reviewId?: string | undefined;
+    /** Verbatim expert instruction that authorises an authority-changing edit (severity or status). */
+    basis?: {
+        quote?: string | undefined;
+        reviewId?: string | undefined;
+    } | undefined;
+    /** Where the edit came from: the agent tool (needs a quoted instruction) or the expert console (a human click). */
+    via?: 'tool' | 'console' | undefined;
 }
 export interface ProposeResult {
     ok: true;

@@ -421,6 +421,7 @@ export declare const RuleOverrideRecordSchema: z.ZodObject<{
         who: z.ZodString;
         at: z.ZodString;
         reviewId: z.ZodOptional<z.ZodString>;
+        basis: z.ZodOptional<z.ZodString>;
         change: z.ZodObject<{
             field: z.ZodString;
             from: z.ZodUnknown;
