@@ -3,7 +3,7 @@
 Paper and artifact repository for
 
 > **HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review** —
-> submitted to *Computers* (MDPI), Section *AI-Driven Innovations*.
+> prepared for submission to *Computers* (MDPI), Section *AI-Driven Innovations*; not yet submitted.
 
 This repository holds **both** deliverables of the project: the manuscript and its submission
 materials (`paper/`), and the system the manuscript evaluates (`plugins/hark/`). The plugin's
