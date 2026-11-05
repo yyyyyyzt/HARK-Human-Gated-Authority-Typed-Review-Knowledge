@@ -34,14 +34,14 @@ Topic 选填（下拉含 "None"）；选 Topic 只是让同主题编辑看到，
 - 摘要 191 词（MDPI 建议约 200，已达标）；关键词 7 个；正文 7 节、12 表、2 幅 TikZ 图、1 段算法伪代码。
 - 模板字段 `\articlenumber{0}`、卷期、收稿/修回/录用日期保持默认，由编辑部填写。
 - 作者区已是真值：7 位作者、单一单位、通讯作者邮箱与 ORCID 0009-0002-1803-1529；其余 6 位不显示空 ORCID 图标。
-- 声明区七项均为真值（CRediT 14 项、no external funding、IRB/Informed Consent Not applicable、Data Availability 含快照 `b566b08` 与 Zenodo DOI、Generative AI 披露、无利益冲突并披露全员隶属被评审组织）。唯一需要作者逐条过目的是 CRediT 分配。
+- 声明区七项均为真值（CRediT 14 项、no external funding、IRB/Informed Consent Not applicable、Data Availability 含快照 `b566b08` 与 Zenodo DOI、Generative AI 披露、无利益冲突并披露全员隶属被评审组织）。CRediT 已按作者确认的分工重排：Z.Y. 主导；K.W./Q.W. 为 Validation；H.W. 另担 Resources 与 Supervision；其余作者仅审阅。投稿前请每位作者确认自己的角色。
 
 ## 4. Supplementary File(s)
 
 单个 ZIP，≤ 250 MB。建议内容与 caption：
 
 - `paper/data/public/synthetic/`（100 份合成方案、`truth.json`、`manifest.json`、`selfcheck.json`）
-- `paper/data/public/eval-runs/*.json`（九个确定性运行）与 `summary.md`
+- `paper/data/public/eval-runs/*.json`（九个确定性运行）与 `paper/data/public/summary.md`
 - `plugins/hark/scripts/eval/*.mjs`（生成器、消融、脱敏）
 - `plugins/hark/rules/capability-open-access.rules.yaml`（28 条规则包）
 - `REPRODUCE.md`（英文复现说明）
@@ -88,8 +88,8 @@ is included; the corpus is fully synthetic.
 
 ## 8. 投稿前仍需人工确认
 
-1. **CRediT 14 项逐条核对**（`main.tex` 的 `Author Contributions`）：Software 只给 Z.Y.，Supervision 给 D.J. 与 H.W.，Validation 含 K.W./Q.W.，Investigation 含 K.W./Q.W./Q.L./L.S.。这是唯一的作者侧待确认项。
-2. **Zenodo 版本**：正文如实写归档 v1.0.0 早两个提交（引语校验 + 发布说明），数据逐字节一致。发 v1.1.0 会生成新版本 DOI，需同步替换 Data Availability；默认不发。
+1. **CRediT 逐条确认**（`main.tex` 的 `Author Contributions`）：Z.Y. 主导概念、方法、软件、分析、调查、数据、初稿、可视化与项目管理；K.W./Q.W. 为 Validation；H.W. 另担 Resources 与 Supervision；其余作者仅 Writing—Review & Editing。请每位作者确认自己的角色。
+2. **Zenodo 元数据**：正文如实写归档提交 `cbe1d33`，快照在其后三个提交（DOI 写入、引语校验、发布说明），数据逐字节一致。归档文件不可改，但已发布记录的元数据需在原记录上更正（保留 DOI）；默认不发 v1.1.0。
 3. **MON-001 / DOC-001 / hard 谓词**：由领域负责人复核（正文已把 hard 定位为「当前解析器可见的代理」，不是业务充分性判定）；若改谓词或标签，第 4 节全部数字需重算，不能沿用。
 4. **建议审稿人**（可选）：3 位、近三年无合作、不同机构；留空不影响送审。
 5. **投稿系统字段**：Funding 填 "This research received no external funding."；Data Availability 填仓库 + DOI；AI 使用按稿件披露口径填写。

@@ -33,8 +33,8 @@
 
 ## 投稿前仍需人确认
 
-1. **CRediT 14 项逐条**是否与实际相符（`main.tex` 声明区；尤其 Software 只给 Z.Y.，Supervision 给 D.J. 与 H.W.）。
-2. **Zenodo 版本**：正文如实写「归档源码 v1.0.0 比引用快照早两个提交」。默认不发 v1.1.0；若发，新 DOI 要同步替换 Data Availability。
+1. **CRediT 已按作者确认的分工重排**（`main.tex` 声明区）：Z.Y. 主导概念、方法、软件、分析、调查、数据、初稿、可视化与项目管理；K.W.、Q.W. 为 Validation；H.W. 另担 Resources 与 Supervision；其余作者仅 Writing—Review & Editing。投稿前请每位作者确认自己的角色。
+2. **Zenodo 元数据**：归档文件不可改；已发布记录的元数据仍是占位作者与旧题，按 [`../zenodo/README.md`](../zenodo/README.md) 在原记录上改（保留 DOI），无需发 v1.1.0。正文写归档提交 `cbe1d33`，快照在其后三个提交。
 3. **MON-001 / DOC-001 / hard 谓词**的领域复核（§4.5 已把这些写成解析器可见代理，而非业务充分性判定）。
 4. **建议审稿人**：cover letter 未列，投稿系统里按 MDPI 要求填写（避免与作者同机构、近三年合作者）。
 5. 系统字段：文章号/卷期/日期留空由编辑部填写；版权协议选 CC BY 4.0；ORCID 仅通讯作者展示。

@@ -461,5 +461,25 @@
       "reason": "最终排版与状态术语校订；无新实验。"
     }
   ],
-  "final_copyedits_replay_verified": true
+  "final_copyedits_replay_verified": true,
+  "output_sha256_scope": "ledger output (29 editorial patches + 31 offset copyedits); author-confirmed declaration finalization was applied after ledger generation",
+  "final_text_sha256_before_amendments": "3cbb06b8b5f01b3aa5a277aef4541bb47c9cb7814488db24bf72a1d2d7059ec1",
+  "final_text_sha256": "fceac957ed946517ec1272c268ff427d4a97853edad5b1a2540e1e430ef1683f",
+  "amendments": [
+    {
+      "id": "author-credit-reallocation-2026-11-05",
+      "date": "2026-11-05",
+      "reason": "Author confirmed the contribution hierarchy: Z.Y. lead; K.W. and Q.W. validation; remaining authors review only; H.W. supervision and resources.",
+      "old": "\\noindent\\textbf{Author Contributions:} Conceptualization, Z.Y. and H.W.; methodology, Z.Y. and D.J.; software, Z.Y.; validation, Z.Y., K.W. and Q.W.; formal analysis, Z.Y. and Q.L.; investigation, K.W., Q.W., Q.L. and L.S.; resources, D.J. and H.W.; data curation, K.W., Q.W. and L.S.; writing---original draft preparation, Z.Y.; writing---review and editing, all authors; visualization, Z.Y.; supervision, D.J. and H.W.; project administration, H.W. All authors have read and agreed to the published version of the manuscript.",
+      "new": "\\noindent\\textbf{Author Contributions:} Conceptualization, Z.Y.; methodology, Z.Y.; software, Z.Y.; validation, Z.Y., K.W. and Q.W.; formal analysis, Z.Y.; investigation, Z.Y.; resources, H.W.; data curation, Z.Y.; writing---original draft preparation, Z.Y.; writing---review and editing, all authors; visualization, Z.Y.; supervision, H.W.; project administration, Z.Y. All authors have read and agreed to the published version of the manuscript."
+    },
+    {
+      "id": "archive-commit-correction-2026-11-05",
+      "date": "2026-11-05",
+      "reason": "The Zenodo deposit was built from commit cbe1d33, three commits before the cited snapshot b566b08; the previous wording said two commits and omitted the DOI-wiring commit.",
+      "old": "An archived release is available at \\href{https://doi.org/10.5281/zenodo.23955205}{https://doi.org/10.5281/zenodo.23955205} (release v1.0.0, MIT licence). The corpus, ground-truth labels, manifest and stored evaluation runs in that archive are byte-identical to those of the cited snapshot, so the reported numbers can be recomputed from either; the archive's implementation sources correspond to release v1.0.0, which precedes the cited snapshot by two commits that add the quoted-instruction check on authority-changing rule edits and a release note.",
+      "new": "An archived release is available at \\href{https://doi.org/10.5281/zenodo.23955205}{https://doi.org/10.5281/zenodo.23955205} (release v1.0.0, archived at commit \\texttt{cbe1d33}, MIT licence). The corpus, ground-truth labels, manifest and stored evaluation runs in that archive are byte-identical to those of the cited snapshot, so the reported numbers can be recomputed from either. The cited snapshot adds three commits to the archived release---DOI wiring, the quoted-instruction check on authority-changing rule edits, and a release note---none of which alters the evaluation data."
+    }
+  ],
+  "amendment_note": "Both amendments were checked to occur exactly once in the pre-amendment text and were applied before recompilation; no experimental content changed."
 }

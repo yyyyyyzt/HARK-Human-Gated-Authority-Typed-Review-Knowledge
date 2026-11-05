@@ -1,7 +1,7 @@
 {
   "title": "HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review",
   "upload_type": "software",
-  "description": "<p>Paper and artifact for <em>HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review</em> (submitted to <em>Computers</em>, MDPI).</p><p>HARK reviews technical solution proposals in Markdown. Each review rule carries an operational authority: <em>hard</em> rules are decided by deterministic verifiers that also produce located absence records (a model may never assert absence); <em>hybrid</em> rules let verifiers locate a span while the model judges only inside it; <em>soft</em> rules only raise pending items. A located-quote gate qualifies submitted evidence, a deterministic policy derives the suggested verdict, and expert dispositions are stored as decision records.</p><p>The artifact contains the manuscript source, submission materials, the extension-package source, the 28-rule package with its cue lexicon, the 100-proposal synthetic corpus with 253 planted defects and ground truth, the ablation runner, and the nine published evaluation runs (three configurations x three repetitions). Certified human approval, an effective authority cap across all write paths, and content-addressed configuration restore are stated as target contracts and are not implemented.</p>",
+  "description": "<p>Paper and artifact for <em>HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review</em> (prepared for submission to <em>Computers</em>, MDPI).</p><p>HARK reviews technical solution proposals in Markdown. Each review rule carries an operational authority: <em>hard</em> rules are decided by deterministic verifiers that also produce located absence records (a model may never assert absence); <em>hybrid</em> rules let verifiers locate a span while the model judges only inside it; <em>soft</em> rules only raise pending items. A located-quote gate qualifies submitted evidence, a deterministic policy derives the suggested verdict, and expert dispositions are stored as decision records.</p><p>The artifact contains the manuscript source, submission materials, the extension-package source, the 28-rule package with its cue lexicon, the 100-proposal synthetic corpus with 253 planted defects and ground truth, the ablation runner, and the nine published evaluation runs (three configurations x three repetitions). Certified human approval, an effective authority cap across all write paths, and content-addressed configuration restore are stated as target contracts and are not implemented.</p>",
   "creators": [
     {
       "name": "Yang, Zhitong",
@@ -45,5 +45,14 @@
     "human-in-the-loop",
     "reproducibility"
   ],
-  "access_right": "open"
+  "access_right": "open",
+  "publication_date": "2026-11-04",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge/tree/cbe1d330c7b15cce278ca62f6dfb604a76489502",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ],
+  "notes": "Archived source: commit cbe1d330c7b15cce278ca62f6dfb604a76489502. The v1.0.0 tag was later advanced to c20f7fb74fb2784d2da1038ae0ac81c802160276 to wire this DOI into the repository; that commit changes documentation only and does not alter implementation or evaluation data."
 }

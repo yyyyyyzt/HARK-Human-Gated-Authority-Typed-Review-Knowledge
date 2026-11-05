@@ -18,7 +18,7 @@ abstract: >-
 type: software
 license: MIT
 version: 1.0.0
-date-released: "2026-11-03"
+date-released: "2026-11-04"
 authors:
   - family-names: "Yang"
     given-names: "Zhitong"
@@ -52,5 +52,6 @@ keywords:
   - human-in-the-loop
   - reproducibility
 notes: >-
-  The archived v1.0.0 source predates the manuscript's cited snapshot b566b08 by two commits,
-  which add quote validation and release notes; the evaluation data are byte-identical.
+  The v1.0.0 deposit was built from commit cbe1d33. The manuscript's cited snapshot b566b08 is three
+  commits ahead of that archived commit (DOI wiring, quote validation and release notes); the
+  evaluation data are byte-identical.

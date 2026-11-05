@@ -64,8 +64,9 @@ node scripts/eval/run-ablation.mjs --out out
 the published run reports TP/FP/FN 168/0/85, precision 1.000, recall 0.664, micro-F1 0.798, weighted
 recall 0.649, verdict accuracy 85.0 %, macro-F1 0.832 and Cohen's κ 0.763; for the `B0` keyword
 baseline, 47/124/206, precision 0.275, recall 0.186, micro-F1 0.222, accuracy 28.0 %, κ −0.043.
-The ablation takes about 15 s on a laptop-class machine, and the three repetitions of each
-configuration are byte-identical because no model is involved.
+The ablation takes a few seconds on a laptop-class machine (4.5 s in the stored run). The three
+repetitions of each configuration produce identical metrics and core outputs because no model is
+involved; the JSON files differ only in run id and timestamp.
 
 The four model-dependent configurations (`B1`, `S-gate`, `S-policy`, `S-memory`) are listed in
 `paper/data/public/skipped.json` with the reason each is not part of the published numbers: they need
@@ -75,8 +76,9 @@ an LLM adapter (`--adapter ./your-adapter.mjs`) or online expert feedback.
 
 The manuscript source is `paper/mdpi-article/main.tex`; it compiles with two `pdflatex` passes (no
 BibTeX: all 41 references are inline `\bibitem`s). See `paper/mdpi-article/README.md` for the exact
-command, the validation record and the list of items that still need author confirmation (CRediT roles,
-the Zenodo version correspondence, and domain review of two historical hard predicates). The Chinese
+command, the validation record and the list of items that still need author confirmation (each
+author's CRediT role, and domain review of two historical hard predicates); the Zenodo metadata
+correction has its own runbook in `paper/zenodo/README.md`. The Chinese
 digest in `paper/mdpi-submission/zh-translation.md` mirrors the manuscript section by section.
 
 ## Install the plugin (optional)
@@ -95,9 +97,10 @@ reported, and the anonymisation procedure is implemented in
 
 ## Citation
 
-`CITATION.cff` carries the metadata. The archival DOI is minted by Zenodo for release `v1.0.0`; the
-manuscript cites repository snapshot `b566b08`, whose source is two commits ahead of that archived
-release (they add quote validation and release notes; the data are byte-identical).
+`CITATION.cff` carries the metadata. The archival DOI is minted by Zenodo for release `v1.0.0`,
+built from commit `cbe1d33`. The manuscript cites repository snapshot `b566b08`, which is three
+commits ahead of that archived commit (DOI wiring, quote validation and release notes), with the
+evaluation data byte-identical.
 
 ## Licence
 

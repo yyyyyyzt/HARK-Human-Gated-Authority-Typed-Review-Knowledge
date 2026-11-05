@@ -50,12 +50,12 @@ governance of review knowledge for AI-assisted expert work — and the Topic *AI
 Architecture, and Applications* (alternative: *AI-Driven Software Engineering and Next-Generation Web
 Services*).
 
-**Reproducibility and declarations.** The plugin, the 28-rule package, the corpus generator, the
+**Reproducibility and declarations.** The extension package, the 28-rule package, the corpus generator, the
 100-proposal corpus with planted-defect truth, the ablation runner and the published runs are released
 under MIT at <https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge> and
 archived at Zenodo (DOI 10.5281/zenodo.23955205); the manuscript states that the archived source
-release precedes the cited snapshot by two commits that add quotation checks and release notes, with
-the data byte-identical. The manuscript is original, is not under consideration elsewhere, and all
+(commit cbe1d33) precedes the cited snapshot by three commits that add DOI wiring, quotation checks and
+release notes, with the data byte-identical. The manuscript is original, is not under consideration elsewhere, and all
 authors have approved this submission. The authors declare no conflict of interest and no external
 funding; all authors are affiliated with the organisation whose review workflow supplies the internal
 pilot, as disclosed in the manuscript. The use of a generative AI assistant for language editing and

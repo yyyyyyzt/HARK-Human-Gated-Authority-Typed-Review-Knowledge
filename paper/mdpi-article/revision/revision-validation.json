@@ -1,7 +1,7 @@
 {
   "scope": "Editorial manuscript checks only; no ARS certification or submission approval",
   "source_sha256": "ff4a080292c880f2d4d32484c5811865bd4471c301656846db93fd3401a49313",
-  "final_sha256": "3cbb06b8b5f01b3aa5a277aef4541bb47c9cb7814488db24bf72a1d2d7059ec1",
+  "final_sha256": "fceac957ed946517ec1272c268ff427d4a97853edad5b1a2540e1e430ef1683f",
   "protected_inputs": [
     {
       "role": "initial_review",
@@ -42,13 +42,14 @@
   "author_confirmation_placeholders_retained": false,
   "new_engineering_or_model_experiments": false,
   "compilation": {
-    "engine": "Tectonic 0.17.0",
+    "engine": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)",
     "exit_code": 0,
     "pdf_pages": 23,
-    "pdf_sha256": "0e955f8097669089d147651d85ffa1132e632c3a8e955a063d88f4ebe2c80df4",
+    "pdf_sha256": "1968b6a248de44358d5ce4dcb40bc0500301a9563c3d528531f2a310cab1f234",
     "undefined_citation_or_reference_warning": false,
     "overfull_boxes": 0,
-    "remaining_warnings": "underfull boxes and legacy lineno.sty encoding warning"
+    "remaining_warnings": "underfull boxes and legacy lineno.sty encoding warning",
+    "command": "pdflatex -interaction=nonstopmode main.tex (two passes)"
   },
   "consistency_review": "model-assisted role-separated check; reported TikZ and adopted-state fixes applied; not independent human review",
   "original_integrity_fail_closed": false,
@@ -76,5 +77,10 @@
     ],
     "bibliography": "all 41 entries reordered into first-citation order; previously uncited EU AI Act (Regulation (EU) 2024/1689) now cited in the introduction"
   },
-  "declarations_split": "Acknowledgments and generative-AI disclosure are separate back-matter statements, as MDPI requires"
+  "declarations_split": "Acknowledgments and generative-AI disclosure are separate back-matter statements, as MDPI requires",
+  "post_revision_amendments": [
+    "author-credit-reallocation-2026-11-05",
+    "archive-commit-correction-2026-11-05"
+  ],
+  "exact_patch_replay_scope": "the 29 editorial patches and 31 offset copyedits reproduce the manifest output_sha256; author-confirmed declaration finalization and the two 2026-11-05 amendments were applied afterwards"
 }

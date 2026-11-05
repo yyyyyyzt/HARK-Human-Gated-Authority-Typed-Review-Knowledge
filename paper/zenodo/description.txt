@@ -1,0 +1,5 @@
+Paper and artifact for HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review (prepared for submission to Computers, MDPI).
+
+HARK reviews technical solution proposals in Markdown. Each review rule carries an operational authority: hard rules are decided by deterministic verifiers that also produce located absence records (a model may never assert absence); hybrid rules let verifiers locate a span while the model judges only inside it; soft rules only raise pending items. A located-quote gate qualifies submitted evidence, a deterministic policy derives the suggested verdict, and expert dispositions are stored as decision records.
+
+The artifact contains the manuscript source, submission materials, the extension-package source, the 28-rule package with its cue lexicon, the 100-proposal synthetic corpus with 253 planted defects and ground truth, the ablation runner, and the nine published evaluation runs (three configurations x three repetitions). Certified human approval, an effective authority cap across all write paths, and content-addressed configuration restore are stated as target contracts and are not implemented.

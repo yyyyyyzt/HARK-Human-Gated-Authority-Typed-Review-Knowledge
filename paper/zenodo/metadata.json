@@ -1,0 +1,79 @@
+{
+  "record_id": 23955205,
+  "concept_record_id": 23955204,
+  "doi": "10.5281/zenodo.23955205",
+  "title": "HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review",
+  "publication_date": "2026-11-04",
+  "resource_type": "Software",
+  "version": "1.0.0",
+  "language": "English",
+  "license": "MIT",
+  "keywords": [
+    "large language models",
+    "document review",
+    "authority typing",
+    "evidence grounding",
+    "neuro-symbolic verification",
+    "human-in-the-loop",
+    "reproducibility"
+  ],
+  "creators": [
+    {
+      "name": "Yang, Zhitong",
+      "family_name": "Yang",
+      "given_name": "Zhitong",
+      "orcid": "0009-0002-1803-1529",
+      "affiliation": "State Grid Customer Service Center, Tianjin 300300, China"
+    },
+    {
+      "name": "Wang, Kai",
+      "family_name": "Wang",
+      "given_name": "Kai",
+      "affiliation": "State Grid Customer Service Center, Tianjin 300300, China"
+    },
+    {
+      "name": "Wang, Qingxian",
+      "family_name": "Wang",
+      "given_name": "Qingxian",
+      "affiliation": "State Grid Customer Service Center, Tianjin 300300, China"
+    },
+    {
+      "name": "Li, Qi",
+      "family_name": "Li",
+      "given_name": "Qi",
+      "affiliation": "State Grid Customer Service Center, Tianjin 300300, China"
+    },
+    {
+      "name": "Song, Lin",
+      "family_name": "Song",
+      "given_name": "Lin",
+      "affiliation": "State Grid Customer Service Center, Tianjin 300300, China"
+    },
+    {
+      "name": "Jin, Dahai",
+      "family_name": "Jin",
+      "given_name": "Dahai",
+      "affiliation": "State Grid Customer Service Center, Tianjin 300300, China"
+    },
+    {
+      "name": "Wang, Hong",
+      "family_name": "Wang",
+      "given_name": "Hong",
+      "affiliation": "State Grid Customer Service Center, Tianjin 300300, China"
+    }
+  ],
+  "description_html": "<p>Paper and artifact for <em>HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review</em> (prepared for submission to <em>Computers</em>, MDPI).</p><p>HARK reviews technical solution proposals in Markdown. Each review rule carries an operational authority: <em>hard</em> rules are decided by deterministic verifiers that also produce located absence records (a model may never assert absence); <em>hybrid</em> rules let verifiers locate a span while the model judges only inside it; <em>soft</em> rules only raise pending items. A located-quote gate qualifies submitted evidence, a deterministic policy derives the suggested verdict, and expert dispositions are stored as decision records.</p><p>The artifact contains the manuscript source, submission materials, the extension-package source, the 28-rule package with its cue lexicon, the 100-proposal synthetic corpus with 253 planted defects and ground truth, the ablation runner, and the nine published evaluation runs (three configurations x three repetitions). Certified human approval, an effective authority cap across all write paths, and content-addressed configuration restore are stated as target contracts and are not implemented.</p>",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge/tree/cbe1d330c7b15cce278ca62f6dfb604a76489502",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ],
+  "notes": "Archived source: commit cbe1d330c7b15cce278ca62f6dfb604a76489502. The v1.0.0 tag was later advanced to c20f7fb74fb2784d2da1038ae0ac81c802160276 to wire this DOI into the repository; that commit changes documentation only and does not alter implementation or evaluation data.",
+  "file": {
+    "key": "yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge-v1.0.0.zip",
+    "size": 1814296,
+    "checksum": "md5:02c7e7209d78259ed3207dfb7a5ac415"
+  }
+}
