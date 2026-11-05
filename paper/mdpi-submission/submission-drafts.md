@@ -31,7 +31,7 @@ Topic 选填（下拉含 "None"）；选 Topic 只是让同主题编辑看到，
 
 - 主文件用 **LaTeX ZIP**：`main.zip`（19 个文件，含 `Definitions/`、`main.tex`、`main.pdf`、修订记录）。编辑部与排版编辑要能用 `pdflatex` 重编译；本机与 Tectonic 0.17.0 均验证 23 页、0 error、0 Overfull。
 - 若赶时间可走 **Free Format Submission**（只传 `main.pdf`），但会失去模板声明区格式，不推荐。
-- 摘要 191 词（MDPI 建议约 200，已达标）；关键词 6 个；正文 7 节、12 表、2 幅 TikZ 图、1 段算法伪代码。
+- 摘要 191 词（MDPI 建议约 200，已达标）；关键词 7 个；正文 7 节、12 表、2 幅 TikZ 图、1 段算法伪代码。
 - 模板字段 `\articlenumber{0}`、卷期、收稿/修回/录用日期保持默认，由编辑部填写。
 - 作者区已是真值：7 位作者、单一单位、通讯作者邮箱与 ORCID 0009-0002-1803-1529；其余 6 位不显示空 ORCID 图标。
 - 声明区七项均为真值（CRediT 14 项、no external funding、IRB/Informed Consent Not applicable、Data Availability 含快照 `b566b08` 与 Zenodo DOI、Generative AI 披露、无利益冲突并披露全员隶属被评审组织）。唯一需要作者逐条过目的是 CRediT 分配。
