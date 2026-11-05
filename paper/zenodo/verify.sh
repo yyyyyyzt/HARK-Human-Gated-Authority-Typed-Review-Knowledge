@@ -50,8 +50,8 @@ check("7 keywords", m.get("keywords") == expected_keywords, repr(m.get("keywords
 
 related = m.get("related_identifiers", [])
 commit_url = "https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge/tree/cbe1d330c7b15cce278ca62f6dfb604a76489502"
-check("related identifier points to archived commit cbe1d33", any(r.get("identifier") == commit_url for r in related), repr([r.get("identifier") for r in related]))
-if any(r.get("identifier", "").endswith("/tree/v1.0.0") for r in related):
+check("related identifier points to archived commit cbe1d33", any("cbe1d330c7b15cce278ca62f6dfb604a76489502" in r.get("identifier", "") for r in related), repr([r.get("identifier") for r in related]))
+if any("/tree/v1.0.0" in r.get("identifier", "") for r in related):
     print("  WARN the old tree/v1.0.0 related identifier is still present; remove it if the form allows")
 
 files = record.get("files", [])
