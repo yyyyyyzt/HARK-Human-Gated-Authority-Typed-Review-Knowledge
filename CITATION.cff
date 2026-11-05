@@ -3,34 +3,54 @@ message: "If you use this artifact, please cite the paper and this repository."
 repository-code: "https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge"
 doi: "10.5281/zenodo.23955205"
 url: "https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge"
-title: "HARK: authority-typed review knowledge with human-gated evolution"
+title: "HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review"
 abstract: >-
-  Plugin and evaluation artifact for LLM-assisted preliminary review of technical solution
-  proposals: verifiability-typed rules (hard/hybrid/soft), a tool-side evidence gate, a
-  deterministic verdict policy, and a human-gated learned layer. Includes the 28-rule package,
-  the 100-proposal synthetic corpus with 253 planted defects, the ablation runner and the
-  published evaluation runs.
+  Paper and artifact for HARK, a review system for evidence-bearing document review. Review rules
+  carry an operational authority: hard rules are decided by deterministic verifiers that also produce
+  located absence records (a model may never assert absence); hybrid rules let verifiers locate a
+  span while the model judges only inside it; soft rules only raise pending items. A located-quote
+  gate qualifies submitted evidence, a deterministic policy derives the suggested verdict, and expert
+  dispositions are stored as decision records. The artifact contains the manuscript and submission
+  materials, the extension-package source, the 28-rule package, the 100-proposal synthetic corpus
+  with 253 planted defects, the ablation runner, and the nine published evaluation runs. Certified
+  human approval, an effective authority cap across all write paths, and content-addressed
+  configuration restore are target contracts, not implemented guarantees.
 type: software
 license: MIT
 version: 1.0.0
 date-released: "2026-11-03"
 authors:
-  - family-names: "A"
-    given-names: "Author"
-  - family-names: "B"
-    given-names: "Author"
-  - family-names: "C"
-    given-names: "Author"
-  - family-names: "D"
-    given-names: "Author"
-  - family-names: "E"
-    given-names: "Author"
-  - family-names: "F"
-    given-names: "Author"
+  - family-names: "Yang"
+    given-names: "Zhitong"
+    orcid: "https://orcid.org/0009-0002-1803-1529"
+    email: "yyyyyyzt@tju.edu.cn"
+    affiliation: "State Grid Customer Service Center, Tianjin 300300, China"
+  - family-names: "Wang"
+    given-names: "Kai"
+    affiliation: "State Grid Customer Service Center, Tianjin 300300, China"
+  - family-names: "Wang"
+    given-names: "Qingxian"
+    affiliation: "State Grid Customer Service Center, Tianjin 300300, China"
+  - family-names: "Li"
+    given-names: "Qi"
+    affiliation: "State Grid Customer Service Center, Tianjin 300300, China"
+  - family-names: "Song"
+    given-names: "Lin"
+    affiliation: "State Grid Customer Service Center, Tianjin 300300, China"
+  - family-names: "Jin"
+    given-names: "Dahai"
+    affiliation: "State Grid Customer Service Center, Tianjin 300300, China"
+  - family-names: "Wang"
+    given-names: "Hong"
+    affiliation: "State Grid Customer Service Center, Tianjin 300300, China"
 keywords:
   - large language models
   - document review
-  - human-in-the-loop
-  - neuro-symbolic verification
+  - authority typing
   - evidence grounding
-  - knowledge evolution
+  - neuro-symbolic verification
+  - human-in-the-loop
+  - reproducibility
+notes: >-
+  The archived v1.0.0 source predates the manuscript's cited snapshot b566b08 by two commits,
+  which add quote validation and release notes; the evaluation data are byte-identical.
