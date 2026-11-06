@@ -1,7 +1,7 @@
 {
   "scope": "Editorial manuscript checks only; no ARS certification or submission approval",
   "source_sha256": "ff4a080292c880f2d4d32484c5811865bd4471c301656846db93fd3401a49313",
-  "final_sha256": "89e65e0b3221b3d0d3f17e9a7cd6b3b396b970832d439bd5a42b3e72255f2a23",
+  "final_sha256": "2275b8ad48b53440567d617ad1da4cbf51f7527f9f006b6859a6a88432a4a27a",
   "protected_inputs": [
     {
       "role": "initial_review",
@@ -45,7 +45,7 @@
     "engine": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)",
     "exit_code": 0,
     "pdf_pages": 23,
-    "pdf_sha256": "f48cfb9d1e9e5501816dcda4a7e907bb487d0b43a5352e42c644057e7d1d55f0",
+    "pdf_sha256": "eb1736b89dd0b8d3c9bceb71435dd17470d2ccf20d582c2447130ed79934e8ea",
     "undefined_citation_or_reference_warning": false,
     "overfull_boxes": 0,
     "remaining_warnings": "underfull boxes and legacy lineno.sty encoding warning",
@@ -54,7 +54,7 @@
   "consistency_review": "model-assisted role-separated check; reported TikZ and adopted-state fixes applied; not independent human review",
   "original_integrity_fail_closed": false,
   "pdf_replacement_characters": 0,
-  "preview_visual_check": "selected page 1 (title, author order, abstract), architecture, tier and final bibliography pages; not every-page formal layout validation",
+  "preview_visual_check": "selected page 1 (title, author order, 200-word abstract), page 17 (Operational effect and RQ1-RQ3), architecture/tier and final bibliography pages; not every-page formal layout validation",
   "class_compatibility_edit": "Definitions/mdpi.cls: two generic logo references changed from EPS to existing converted PDF; no logic changes",
   "revision_record_rows": 34,
   "revision_record_local_links_and_line_ranges_valid": true,
@@ -82,7 +82,8 @@
     "author-credit-reallocation-2026-11-05",
     "archive-commit-correction-2026-11-05",
     "author-order-correction-2026-11-05",
-    "hark-reexpansion-and-scale-context-2026-11-06"
+    "hark-reexpansion-and-scale-context-2026-11-06",
+    "operational-scale-correction-2026-11-06"
   ],
-  "exact_patch_replay_scope": "the 29 editorial patches and 31 offset copyedits reproduce the manifest output_sha256; author-confirmed declaration finalization, the three 2026-11-05 amendments (CRediT, archive commit, author order), and the 2026-11-06 HARK re-expansion/scale amendment were applied afterwards"
+  "exact_patch_replay_scope": "the 29 editorial patches and 31 offset copyedits reproduce the manifest output_sha256; author-confirmed declaration finalization, the three 2026-11-05 amendments (CRediT, archive commit, author order), and the two 2026-11-06 amendments (HARK re-expansion, operational-scale correction) were applied afterwards"
 }

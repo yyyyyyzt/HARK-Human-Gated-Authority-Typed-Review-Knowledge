@@ -12,7 +12,7 @@
 | 文件 | 用途 | 状态 |
 |---|---|---|
 | [`cover-letter.md`](cover-letter.md) | 投稿系统的 cover letter 正文（英文），含贡献、有界证据与 target contracts 声明 | 2026-11-06 按 23 页定稿重写；**发布前须作者通读**，尤其不要改回旧题的「human-gated」表述 |
-| [`cover-letter.pdf`](cover-letter.pdf) | 上述正文的 A4 单页 PDF（10.5pt Times，1 页），可直接上传投稿系统 | 2026-11-06 生成，72,733 B，sha256 `d0d76e87…` |
+| [`cover-letter.pdf`](cover-letter.pdf) | 上述正文的 A4 单页 PDF（10.5pt Times，1 页），可直接上传投稿系统 | 2026-11-06 生成，72,791 B，sha256 `ec9066cf…` |
 | [`submission-drafts.md`](submission-drafts.md) | 上传清单、Section/Topic 对齐、补充材料 caption、图形摘要说明、三条禁写、投稿前人工确认项 | 与修订稿同步 |
 | [`zh-translation.md`](zh-translation.md) | 修订稿的中文逐节压缩译述（含全部结果数字与新口径），供内部审阅与单位备案 | **非投稿件**；正式投稿只用英文 |
 | [`graphical-abstract.tex`](graphical-abstract.tex) / [`graphical-abstract.png`](graphical-abstract.png) | 图形摘要（1100×560 PNG，投稿系统单独上传） | 2026-11-05 重新生成：`Typed rules, located evidence, accountable disposition` |

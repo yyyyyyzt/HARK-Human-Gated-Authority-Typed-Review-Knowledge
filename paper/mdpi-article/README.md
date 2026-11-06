@@ -4,7 +4,7 @@
 `paper/ei-conference/`（IOS Press 模板的会议稿）已废弃，只作留档，不得用于投稿。
 
 当前 `main.tex` 是 2026-11-06 的投稿前定稿（在 2026-11-05 分支修订稿基础上完成）：
-标题为 **HARK: Human-Accountable, Authority-Typed Review Knowledge for Evidence-Bearing Document Review**；HARK 重新展开为 *Human-Accountable Review Knowledge*，摘要/RQ/结果/讨论同步重写，并在不改变 5 次运行 / 3 份文档的 instrumented sample 的前提下，补入“每月 100+ 份、多年、数千条记录”的运营背景。
+标题为 **HARK: Human-Accountable, Authority-Typed Review Knowledge for Evidence-Bearing Document Review**；HARK 重新展开为 *Human-Accountable Review Knowledge*，摘要/RQ/结果/讨论同步重写，并在不改变 5 次运行 / 3 份文档的 instrumented sample 的前提下，补入“首年约 2,000 份文档”的运营背景。
 未实现的能力（认证式人工批准、完整有效权限上限、内容寻址恢复）全部显式降为 *target contracts*。
 修订依据与逐条处置见 `revision/修改记录.md` 与 `../audit/final-review.md`。
 
@@ -12,9 +12,9 @@
 
 | 文件 | 说明 |
 |---|---|
-| `main.tex` | 唯一源文件（90,834 B，sha256 `89e65e0b…`）。`\documentclass[computers,article,submit,moreauthors]{Definitions/mdpi}`；7 个一级节、12 表、2 幅 TikZ 图、1 段算法伪代码、41 条文献（全部内联 `\bibitem`，不再 `\input{bib.tex}`） |
-| `main.pdf` | 权威编译产物（23 页 A4，约 11.9k 词，259,050 B，sha256 `f48cfb9d…`，pdfTeX 1.40.25，0 Overfull） |
-| `main.zip` | 投稿源码包（19 个文件，含 `Definitions/` 与修订记录，990,126 B，sha256 `41314ddf…`），直接上传 MDPI 系统 |
+| `main.tex` | 唯一源文件（91,400 B，sha256 `2275b8ad…`）。`\documentclass[computers,article,submit,moreauthors]{Definitions/mdpi}`；7 个一级节、12 表、2 幅 TikZ 图、1 段算法伪代码、41 条文献（全部内联 `\bibitem`，不再 `\input{bib.tex}`） |
+| `main.pdf` | 权威编译产物（23 页 A4，约 11.9k 词，259,652 B，sha256 `eb1736b8…`，pdfTeX 1.40.25，0 Overfull） |
+| `main.zip` | 投稿源码包（19 个文件，含 `Definitions/` 与修订记录，991,479 B，sha256 `91096261…`），直接上传 MDPI 系统 |
 | `Definitions/` | MDPI 官方类文件与参考文献样式。`mdpi.cls` 仅改 2 处 logo 引用（EPS → `logo-mdpi-eps-converted-to.pdf`），避免编译时依赖 shell-escape 的 EPS 转换 |
 | `revision/` | 本轮修订的可复核证据：统一差异、机器可读替换账本、验证报告、修订记录、最终一致性复核、基线稿、编译日志与页面预览 |
 | `build.sh` | 本机编译脚本（`pdflatex` 两遍；`epstopdf` 仅在缺 logo PDF 时执行） |
@@ -50,7 +50,7 @@ pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode 
 | `README.md` | 修订包自带说明（构建方式、最终状态、not claimed） |
 | `revision.diff` | 相对上传基线 `original-main.tex` 的完整统一差异 |
 | `original-main.tex` | 本轮基线（= 原 `paper/mdpi-article/main.tex`，sha256 `ff4a08…`），可据此复算 diff |
-| `editorial-patch-manifest.json` | 机器可读的逐处替换账本（29 条编辑补丁 + 31 条偏移校订可复算至 `df1ab8a9…`；作者确认后的最终稿、2026-11-05 三条 amendment 与 2026-11-06 HARK 重新展开/运营规模 amendment 另记） |
+| `editorial-patch-manifest.json` | 机器可读的逐处替换账本（29 条编辑补丁 + 31 条偏移校订可复算至 `df1ab8a9…`；作者确认后的最终稿、2026-11-05 三条 amendment 与两条 2026-11-06 amendment（HARK 重新展开、运营规模修正）另记） |
 | `revision-validation.json` | 校验记录：哈希、页数、引用闭合、环境配平、编译结果 |
 | `修改记录.md` | 中文修订记录：定位/重构、数值口径纠正、34 项答复逐项处置、仍属目标契约的清单 |
 | `final-consistency-review.md` | 最终一致性复核（模型辅助、角色分离，非独立人工复核） |

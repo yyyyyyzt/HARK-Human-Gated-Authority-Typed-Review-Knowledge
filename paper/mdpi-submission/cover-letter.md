@@ -41,10 +41,10 @@ passed, and the stored results do not show that a reviewer resolved them; 15 of 
 documents are under-called, including four of 23 expected Fail documents that receive a suggested Pass;
 gate acceptance is 42/53 and measures quotation length and overlap, not semantic support. Only 10 of
 the 28 shipped rules proved deterministically checkable and all four blocker rules are `hybrid` — a
-finding about the legacy checklist, reported as such. Operationally, the organisation's workflow handles more than 100 proposals per month and has
-accumulated thousands of records over several years. The instrumented evidence is five
-development-team runs on three internal proposals, reported as workflow evidence only, not as
-independent expert validation.
+finding about the legacy checklist, reported as such. Operationally, the workflow processed approximately 2,000 documents in its first year; the effect
+at that scale is coverage and traceability, not a measured accuracy or time gain. The instrumented
+evidence remains five development-team runs on three internal proposals, reported as workflow
+evidence only, not as independent expert validation.
 
 **Fit.** *Computers* publishes complete computational systems with reproducible evaluation, and this
 manuscript contributes exactly that: an executable review architecture, its data model and
