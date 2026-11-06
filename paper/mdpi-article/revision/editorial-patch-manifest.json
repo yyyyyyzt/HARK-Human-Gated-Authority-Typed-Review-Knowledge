@@ -462,9 +462,9 @@
     }
   ],
   "final_copyedits_replay_verified": true,
-  "output_sha256_scope": "ledger output (29 editorial patches + 31 offset copyedits); author-confirmed declaration finalization and three 2026-11-05 amendments were applied after ledger generation",
+  "output_sha256_scope": "ledger output (29 editorial patches + 31 offset copyedits); author-confirmed declaration finalization, three 2026-11-05 amendments, and one 2026-11-06 framing/scale amendment were applied after ledger generation",
   "final_text_sha256_before_amendments": "3cbb06b8b5f01b3aa5a277aef4541bb47c9cb7814488db24bf72a1d2d7059ec1",
-  "final_text_sha256": "da5eeef0c7af2e72bd51089161e9b1d68f58b487352eb8902af4cf24505a5d50",
+  "final_text_sha256": "89e65e0b3221b3d0d3f17e9a7cd6b3b396b970832d439bd5a42b3e72255f2a23",
   "amendments": [
     {
       "id": "author-credit-reallocation-2026-11-05",
@@ -486,7 +486,27 @@
       "reason": "Author confirmed Qingxian Wang as second author and Kai Wang as third; both the display author list and the running AuthorNames line were reordered. No other content changed.",
       "old": "\\Author{Zhitong Yang $^{1}$\\orcidA{}, Kai Wang $^{1}$, Qingxian Wang $^{1}$, Qi Li $^{1}$, Lin Song $^{1}$, Dahai Jin $^{1}$, Hong Wang $^{1}$}\n\\AuthorNames{Zhitong Yang, Kai Wang, Qingxian Wang, Qi Li, Lin Song, Dahai Jin and Hong Wang}",
       "new": "\\Author{Zhitong Yang $^{1}$\\orcidA{}, Qingxian Wang $^{1}$, Kai Wang $^{1}$, Qi Li $^{1}$, Lin Song $^{1}$, Dahai Jin $^{1}$, Hong Wang $^{1}$}\n\\AuthorNames{Zhitong Yang, Qingxian Wang, Kai Wang, Qi Li, Lin Song, Dahai Jin and Hong Wang}"
+    },
+    {
+      "id": "hark-reexpansion-and-scale-context-2026-11-06",
+      "date": "2026-11-06",
+      "reason": "Author asked to resolve the obsolete HARK expansion (Human-Gated), align the cover letter with document-review terminology, and state the real operational scale without inflating the instrumented pilot. HARK is re-expanded as Human-Accountable Review Knowledge; title, abstract, introduction, pilot framing, RQ4, limitations, artifact citation and data-availability nomenclature were updated. The five-run/three-proposal pilot remains the instrumented sample; multi-year, more-than-100-per-month and thousands-of-records context is stated as deployment context only.",
+      "old_sha256": "da5eeef0c7af2e72bd51089161e9b1d68f58b487352eb8902af4cf24505a5d50",
+      "new_sha256": "89e65e0b3221b3d0d3f17e9a7cd6b3b396b970832d439bd5a42b3e72255f2a23",
+      "amended_output_sha256": "89e65e0b3221b3d0d3f17e9a7cd6b3b396b970832d439bd5a42b3e72255f2a23",
+      "changes": [
+        "title and HARK expansion",
+        "abstract",
+        "introduction empirical scope and accountability sentence",
+        "contribution 4",
+        "Section 5 pilot framing",
+        "RQ4",
+        "Limitations",
+        "artifact bibliography entry",
+        "Data Availability repository-name clarification"
+      ],
+      "note": "Exact before/after text is in revision.diff; applied after the 60-patch ledger and after the three 2026-11-05 amendments. No experimental result or evaluation datum changed."
     }
   ],
-  "amendment_note": "All three amendments were checked to occur exactly once in the pre-amendment text and were applied before recompilation; no experimental content changed."
+  "amendment_note": "The three 2026-11-05 amendments were checked to occur exactly once in the pre-amendment text and were applied before recompilation. The 2026-11-06 framing/scale amendment is recorded by old/new source hashes because its exact before/after text is in revision.diff. No experimental content changed."
 }

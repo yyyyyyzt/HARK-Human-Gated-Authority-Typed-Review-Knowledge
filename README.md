@@ -1,9 +1,13 @@
-# HARK — authority-typed review knowledge for evidence-bearing document review
+# HARK — human-accountable review knowledge for evidence-bearing document review
 
 Paper and artifact repository for
 
-> **HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review** —
+> **HARK: Human-Accountable, Authority-Typed Review Knowledge for Evidence-Bearing Document Review** —
 > prepared for submission to *Computers* (MDPI), Section *AI-Driven Innovations*; not yet submitted.
+
+HARK denotes **Human-Accountable Review Knowledge**: review criteria, located evidence and human
+dispositions are recorded so that the knowledge state is inspectable. “Accountable” refers to the
+recorded human disposition, not to enforced identity authentication.
 
 This repository holds **both** deliverables of the project: the manuscript and its submission
 materials (`paper/`), and the system the manuscript evaluates (`plugins/hark/`). The plugin's
@@ -11,7 +15,7 @@ development history lives in a separate repository, `dsh-plugin-dev-guide`; **th
 here**. The system is an extension package for DeepSeek Harness (DSH), an open-source conversational
 agent harness.
 
-HARK reviews technical solution proposals written in Markdown and returns a *suggested* verdict plus
+HARK reviews documents, with technical solution proposals as the empirical instantiation, and returns a *suggested* verdict plus
 per-rule findings. Each finding either carries a quote located in the document or is produced by a
 verifier as an explicit absence record — the model is never allowed to assert absence. Rules carry an
 operational authority: `hard` (the verifier decides), `hybrid` (the verifier locates a span and the
@@ -78,7 +82,7 @@ The manuscript source is `paper/mdpi-article/main.tex`; it compiles with two `pd
 BibTeX: all 41 references are inline `\bibitem`s). See `paper/mdpi-article/README.md` for the exact
 command, the validation record and the items that still need author confirmation (each author's
 CRediT role, and domain review of two historical hard predicates). The Zenodo metadata was corrected
-in place on 2026-11-05 and `paper/zenodo/verify.sh` passes; the runbook remains in
+in place on 2026-11-05; the 2026-11-06 HARK re-expansion changes only the title, which still needs one manual sync in record 23955205. The runbook remains in
 `paper/zenodo/README.md`. The Chinese
 digest in `paper/mdpi-submission/zh-translation.md` mirrors the manuscript section by section.
 

@@ -6,18 +6,18 @@
 
 ---
 
-5 November 2026
+6 November 2026
 
 Dear Editors,
 
-We submit the manuscript **“HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document
-Review”** for consideration as an *Article* in *Computers*, Section *AI-Driven Innovations*.
+We submit the manuscript **“HARK: Human-Accountable, Authority-Typed Review Knowledge for
+Evidence-Bearing Document Review”** for consideration as an *Article* in *Computers*, Section *AI-Driven Innovations*.
 
-**Problem.** Organisations increasingly pre-screen technical documents with language models before an
+**Problem.** Organisations increasingly pre-screen documents with language models before an
 accountable expert signs off, yet the expert's review knowledge enters such systems as keyword rules,
-prompt checklists, or retrieval over past reviews. Each route loses a property that high-stakes review
+prompt checklists, or retrieval over past reviews. Each route loses a property that high-stakes document review
 needs: a finding must trace to a stated criterion and to a location in the document; the permission to
-conclude a requirement must match how deterministically that requirement can actually be checked; the
+resolve a criterion must match how deterministically that criterion can actually be checked; the
 knowledge must accumulate from use; and that accumulation must remain inspectable and revocable.
 
 **What the paper does.** HARK is an architecture and an executed system that represent review criteria
@@ -29,7 +29,9 @@ deterministic policy derives the suggested verdict from the confirmed set, and d
 the expert's dispositions. The manuscript reports the architecture, the implementation, the rule
 package and a retrospective evaluation, and it separates implemented behaviour from three target
 contracts that the evaluated snapshot does **not** enforce (authenticated human approval, a complete
-effective-authority ceiling, and content-addressed configuration recovery).
+effective-authority ceiling, and content-addressed configuration recovery). Technical solution
+proposals are the empirical instantiation; assurance cases, compliance dossiers and architecture
+designs are potential applications, not domains validated here.
 
 **Evidence.** On a fixed developmental regression corpus of 100 synthetic proposals with 253 planted
 defects, the combined configuration reaches micro-F1 0.798 (TP/FP/FN = 168/0/85) against 0.222 for a
@@ -39,8 +41,10 @@ passed, and the stored results do not show that a reviewer resolved them; 15 of 
 documents are under-called, including four of 23 expected Fail documents that receive a suggested Pass;
 gate acceptance is 42/53 and measures quotation length and overlap, not semantic support. Only 10 of
 the 28 shipped rules proved deterministically checkable and all four blocker rules are `hybrid` — a
-finding about the legacy checklist, reported as such. Five development-team runs on three internal
-proposals are reported as workflow evidence only, not as independent expert validation.
+finding about the legacy checklist, reported as such. Operationally, the organisation's workflow handles more than 100 proposals per month and has
+accumulated thousands of records over several years. The instrumented evidence is five
+development-team runs on three internal proposals, reported as workflow evidence only, not as
+independent expert validation.
 
 **Fit.** *Computers* publishes complete computational systems with reproducible evaluation, and this
 manuscript contributes exactly that: an executable review architecture, its data model and
@@ -52,8 +56,8 @@ Services*).
 
 **Reproducibility and declarations.** The extension package, the 28-rule package, the corpus generator, the
 100-proposal corpus with planted-defect truth, the ablation runner and the published runs are released
-under MIT at <https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge> and
-archived at Zenodo (DOI 10.5281/zenodo.23955205); the manuscript states that the archived source
+under MIT at <https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge> (the
+repository path retains the project's original name) and archived at Zenodo (DOI 10.5281/zenodo.23955205); the manuscript states that the archived source
 (commit cbe1d33) precedes the cited snapshot by three commits that add DOI wiring, quotation checks and
 release notes, with the data byte-identical. The manuscript is original, is not under consideration elsewhere, and all
 authors have approved this submission. The authors declare no conflict of interest and no external

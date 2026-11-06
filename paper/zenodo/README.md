@@ -1,6 +1,6 @@
 # Zenodo：元数据修正记录与复核手册
 
-**状态（2026-11-05）：已完成。** 记录 **23955205**（DOI `10.5281/zenodo.23955205`）的元数据已在原记录上修正，`./verify.sh` 全项通过；归档文件（1,814,296 B，md5 `02c7e7209d78259ed3207dfb7a5ac415`）未改，DOI 不变。以下步骤保留为操作记录，供未来元数据漂移时复核。
+**状态（2026-11-05 已完成；2026-11-06 题名待同步）。** 记录 **23955205**（DOI `10.5281/zenodo.23955205`）的作者、单位、日期、描述、关键词与归档关联已对齐；2026-11-06 论文题名改为 *HARK: Human-Accountable, Authority-Typed Review Knowledge for Evidence-Bearing Document Review*，需在同一记录上把 **Title** 同步，DOI 不变。同步前 `./verify.sh` 会报 title mismatch。归档文件（1,814,296 B，md5 `02c7e7209d78259ed3207dfb7a5ac415`）未改。以下步骤保留为操作记录，供未来元数据漂移时复核。
 
 本目录的文件：
 
@@ -14,7 +14,7 @@
 ## 0. 先确认两件事
 
 1. 用**创建该记录的 Zenodo 账号**登录（换账号会看不到 `Edit` 按钮）。
-2. 打开 <https://zenodo.org/records/23955205>，确认右上/右侧有 **Edit**（铅笔）按钮。当前记录是 published、revision 3，没有未完成的 draft。
+2. 打开 <https://zenodo.org/records/23955205>，确认右上/右侧有 **Edit**（铅笔）按钮。当前记录是 published、revision 4，没有未完成的 draft。
 
 改之前留个底：
 
@@ -34,7 +34,7 @@ curl -sS https://zenodo.org/api/records/23955205 -o /tmp/zenodo-before.json
 
 | 表单字段 | 填什么 |
 |---|---|
-| **Title** | `HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review` |
+| **Title** | `HARK: Human-Accountable, Authority-Typed Review Knowledge for Evidence-Bearing Document Review` |
 | **Publication date** | 保持 `2026-11-04`（这是归档产物的发布日期，不要改成今天） |
 | **Resource type** | 保持 `Software`（不要改成 Publication） |
 | **Creators** | 删掉 `Author A`–`Author F`，按下面 7 行顺序添加 |

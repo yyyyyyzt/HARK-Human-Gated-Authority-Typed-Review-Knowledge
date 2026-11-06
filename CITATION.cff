@@ -3,7 +3,7 @@ message: "If you use this artifact, please cite the paper and this repository."
 repository-code: "https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge"
 doi: "10.5281/zenodo.23955205"
 url: "https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge"
-title: "HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review"
+title: "HARK: Human-Accountable, Authority-Typed Review Knowledge for Evidence-Bearing Document Review"
 abstract: >-
   Paper and artifact for HARK, a review system for evidence-bearing document review. Review rules
   carry an operational authority: hard rules are decided by deterministic verifiers that also produce

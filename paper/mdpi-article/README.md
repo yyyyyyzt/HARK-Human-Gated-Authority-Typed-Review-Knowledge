@@ -3,8 +3,8 @@
 这是论文的**唯一投稿版本**（目标 MDPI *Computers*，ISSN 2073-431X，EI/Compendex 收录）。
 `paper/ei-conference/`（IOS Press 模板的会议稿）已废弃，只作留档，不得用于投稿。
 
-当前 `main.tex` 是 2026-11-05 在 `japan` 研究机上完成的分支修订稿（审计—修订闭环），已合并回本仓库：
-标题改为 **HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review**，摘要/RQ/结果/讨论同步重写，
+当前 `main.tex` 是 2026-11-06 的投稿前定稿（在 2026-11-05 分支修订稿基础上完成）：
+标题为 **HARK: Human-Accountable, Authority-Typed Review Knowledge for Evidence-Bearing Document Review**；HARK 重新展开为 *Human-Accountable Review Knowledge*，摘要/RQ/结果/讨论同步重写，并在不改变 5 次运行 / 3 份文档的 instrumented sample 的前提下，补入“每月 100+ 份、多年、数千条记录”的运营背景。
 未实现的能力（认证式人工批准、完整有效权限上限、内容寻址恢复）全部显式降为 *target contracts*。
 修订依据与逐条处置见 `revision/修改记录.md` 与 `../audit/final-review.md`。
 
@@ -12,9 +12,9 @@
 
 | 文件 | 说明 |
 |---|---|
-| `main.tex` | 唯一源文件（89,863 B，sha256 `da5eeef0…`）。`\documentclass[computers,article,submit,moreauthors]{Definitions/mdpi}`；7 个一级节、12 表、2 幅 TikZ 图、1 段算法伪代码、41 条文献（全部内联 `\bibitem`，不再 `\input{bib.tex}`） |
-| `main.pdf` | 权威编译产物（23 页 A4，约 11.8k 词，257,666 B，sha256 `07a41dcb…`，pdfTeX 1.40.25，0 Overfull） |
-| `main.zip` | 投稿源码包（19 个文件，含 `Definitions/` 与修订记录，986,216 B，sha256 `5d7a2cc9…`），直接上传 MDPI 系统 |
+| `main.tex` | 唯一源文件（90,834 B，sha256 `89e65e0b…`）。`\documentclass[computers,article,submit,moreauthors]{Definitions/mdpi}`；7 个一级节、12 表、2 幅 TikZ 图、1 段算法伪代码、41 条文献（全部内联 `\bibitem`，不再 `\input{bib.tex}`） |
+| `main.pdf` | 权威编译产物（23 页 A4，约 11.9k 词，259,050 B，sha256 `f48cfb9d…`，pdfTeX 1.40.25，0 Overfull） |
+| `main.zip` | 投稿源码包（19 个文件，含 `Definitions/` 与修订记录，990,126 B，sha256 `41314ddf…`），直接上传 MDPI 系统 |
 | `Definitions/` | MDPI 官方类文件与参考文献样式。`mdpi.cls` 仅改 2 处 logo 引用（EPS → `logo-mdpi-eps-converted-to.pdf`），避免编译时依赖 shell-escape 的 EPS 转换 |
 | `revision/` | 本轮修订的可复核证据：统一差异、机器可读替换账本、验证报告、修订记录、最终一致性复核、基线稿、编译日志与页面预览 |
 | `build.sh` | 本机编译脚本（`pdflatex` 两遍；`epstopdf` 仅在缺 logo PDF 时执行） |
@@ -30,12 +30,12 @@ epstopdf --outfile=Definitions/logo-mdpi-eps-converted-to.pdf Definitions/logo-m
 pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode main.tex
 ```
 
-- 2026-11-05 本机以 pdfTeX 1.40.25 复编（当前权威 PDF）：**23 页、0 error、0 Overfull、无 undefined citation/reference**；Tectonic 0.17.0 对同一源文件也给 23 页。
+- 2026-11-06 本机以 pdfTeX 1.40.25 复编（当前权威 PDF）：**23 页、0 error、0 Overfull、无 undefined citation/reference**；Tectonic 0.17.0 对同一源文件也给 23 页。
 - 两次编译是必须的：第二次才解析交叉引用与文献编号。
 - 不需要 bibtex/biber：文献是 `\bibitem` 内联的 ACS 数字制（41 条，按首次引用顺序编号 1–41，无缺号、无未引用条目；程序化核验见 `revision/revision-validation.json`）。
 - 若要用 Tectonic：`main.zip` 没有随附二进制；本机装 `tectonic` 后 `tectonic -X compile main.tex --keep-logs` 即可。
 
-## 当前状态（2026-11-05，可投稿的**文字稿**）
+## 当前状态（2026-11-06，可投稿的**文字稿**）
 
 - **作者区**：Zhitong Yang（通讯，ORCID `0009-0002-1803-1529`）、Qingxian Wang、Kai Wang、Qi Li、Lin Song、Dahai Jin、Hong Wang；State Grid Customer Service Center, Tianjin 300300, China；通讯邮箱仅 `yyyyyyzt@tju.edu.cn`。其余 6 位不显示空 ORCID 图标（模板会为每个 `\orcidauthor` 画图标，故删除定义而非留空）。
 - **七项声明**全部为作者确认的真实内容：完整 CRediT 14 项、no external funding、IRB / Informed Consent 为 Not applicable 并说明是内部评审文档、Data Availability 写仓库快照 `b566b08` + Zenodo DOI `10.5281/zenodo.23955205`（归档提交 `cbe1d33`，快照在其后三个提交：DOI 写入、引语校验、发布说明）、Generative AI 披露（DeepSeek Harness + DeepSeek 模型，2026-11 使用，未生成任何实验结论）、无利益冲突并披露全员隶属被评审组织。
@@ -50,7 +50,7 @@ pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode 
 | `README.md` | 修订包自带说明（构建方式、最终状态、not claimed） |
 | `revision.diff` | 相对上传基线 `original-main.tex` 的完整统一差异 |
 | `original-main.tex` | 本轮基线（= 原 `paper/mdpi-article/main.tex`，sha256 `ff4a08…`），可据此复算 diff |
-| `editorial-patch-manifest.json` | 机器可读的逐处替换账本（29 条编辑补丁 + 31 条偏移校订可复算至 `df1ab8a9…`；作者确认后的最终稿与 2026-11-05 三条 amendment 另记） |
+| `editorial-patch-manifest.json` | 机器可读的逐处替换账本（29 条编辑补丁 + 31 条偏移校订可复算至 `df1ab8a9…`；作者确认后的最终稿、2026-11-05 三条 amendment 与 2026-11-06 HARK 重新展开/运营规模 amendment 另记） |
 | `revision-validation.json` | 校验记录：哈希、页数、引用闭合、环境配平、编译结果 |
 | `修改记录.md` | 中文修订记录：定位/重构、数值口径纠正、34 项答复逐项处置、仍属目标契约的清单 |
 | `final-consistency-review.md` | 最终一致性复核（模型辅助、角色分离，非独立人工复核） |
@@ -74,5 +74,5 @@ pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode 
 ## 投稿前仍需人确认
 
 1. **CRediT 已按作者确认的分工重排**：Z.Y. 承担 Conceptualization、Methodology、Software、Formal Analysis、Investigation、Data Curation、Writing—Original Draft、Visualization、Project Administration；K.W. 与 Q.W. 为 Validation；H.W. 另担 Resources 与 Supervision；其余作者为 Writing—Review & Editing。投稿前请每位作者确认自己的角色。
-2. **Zenodo 元数据（已完成）**：2026-11-05 在原记录 23955205 上修正，DOI 不变；标题、7 位作者顺序与单位、发布日期、描述、7 个关键词、归档提交关联均已对齐，`paper/zenodo/verify.sh` 全项通过。归档文件未改。正文已如实写归档提交 `cbe1d33` 与快照的三个提交差。
+2. **Zenodo 元数据（2026-11-05 已完成，2026-11-06 题名需同步）**：原记录 23955205 的作者、单位、发布日期、描述、关键词、归档提交关联均已对齐，DOI 不变，归档文件未改。由于 2026-11-06 将题名改为 *HARK: Human-Accountable, Authority-Typed Review Knowledge for Evidence-Bearing Document Review*，需在 Zenodo 网页把 **Title** 一栏同步为新题名（同 DOI，不新建版本）；同步后 `paper/zenodo/verify.sh` 才会重新全项通过。正文已如实写归档提交 `cbe1d33` 与快照的三个提交差。
 3. MON-001 / DOC-001 / hard 谓词建议在录用前由领域负责人复核（正文已把 hard 定位为解析器可见的代理，而非业务充分性判定）。

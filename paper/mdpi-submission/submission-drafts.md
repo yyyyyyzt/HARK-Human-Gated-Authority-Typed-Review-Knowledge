@@ -1,6 +1,6 @@
 # MDPI *Computers* 投稿操作稿
 
-> 对应稿件：`paper/mdpi-article/main.tex`（2026-11-05 修订稿，23 页 A4，41 条内联文献）。
+> 对应稿件：`paper/mdpi-article/main.tex`（2026-11-06 定稿，23 页 A4，41 条内联文献）。
 > 本文件只写「在投稿系统里怎么填、传什么、还差什么」，不再承担论文内容说明；
 > 正式 cover letter 见同目录 `cover-letter.md`，中文译述见 `zh-translation.md`。
 > MDPI 一稿多投禁止：同一时间只投 *Computers* 一处。
@@ -31,7 +31,7 @@ Topic 选填（下拉含 "None"）；选 Topic 只是让同主题编辑看到，
 
 - 主文件用 **LaTeX ZIP**：`main.zip`（19 个文件，含 `Definitions/`、`main.tex`、`main.pdf`、修订记录）。编辑部与排版编辑要能用 `pdflatex` 重编译；本机与 Tectonic 0.17.0 均验证 23 页、0 error、0 Overfull。
 - 若赶时间可走 **Free Format Submission**（只传 `main.pdf`），但会失去模板声明区格式，不推荐。
-- 摘要 191 词（MDPI 建议约 200，已达标）；关键词 7 个；正文 7 节、12 表、2 幅 TikZ 图、1 段算法伪代码。
+- 摘要 200 词（MDPI 建议约 200，已达标）；关键词 7 个；正文 7 节、12 表、2 幅 TikZ 图、1 段算法伪代码。
 - 模板字段 `\articlenumber{0}`、卷期、收稿/修回/录用日期保持默认，由编辑部填写。
 - 作者区已是真值：7 位作者、单一单位、通讯作者邮箱与 ORCID 0009-0002-1803-1529；其余 6 位不显示空 ORCID 图标。
 - 声明区七项均为真值（CRediT 14 项、no external funding、IRB/Informed Consent Not applicable、Data Availability 含快照 `b566b08` 与 Zenodo DOI、Generative AI 披露、无利益冲突并披露全员隶属被评审组织）。CRediT 已按作者确认的分工重排：Z.Y. 主导；K.W./Q.W. 为 Validation；H.W. 另担 Resources 与 Supervision；其余作者仅审阅。投稿前请每位作者确认自己的角色。
@@ -47,8 +47,7 @@ Topic 选填（下拉含 "None"）；选 Topic 只是让同主题编辑看到，
 - `REPRODUCE.md`（英文复现说明）
 
 ```
-Supplementary material for "HARK: Authority-Typed Review Knowledge for
-Evidence-Bearing Document Review".
+Supplementary material for "HARK: Human-Accountable, Authority-Typed Review Knowledge for Evidence-Bearing Document Review".
 
 Contents: (i) the synthetic corpus of 100 technical solution proposals with
 253 planted defects over 23 verifiable rules, the generator seed (20261029),
@@ -89,7 +88,7 @@ is included; the corpus is fully synthetic.
 ## 8. 投稿前仍需人工确认
 
 1. **CRediT 逐条确认**（`main.tex` 的 `Author Contributions`）：Z.Y. 主导概念、方法、软件、分析、调查、数据、初稿、可视化与项目管理；K.W./Q.W. 为 Validation；H.W. 另担 Resources 与 Supervision；其余作者仅 Writing—Review & Editing。请每位作者确认自己的角色。
-2. **Zenodo 元数据（已完成）**：2026-11-05 在原记录 23955205 上更正，DOI 不变；`paper/zenodo/verify.sh` 全项通过。正文如实写归档提交 `cbe1d33`，快照在其后三个提交（DOI 写入、引语校验、发布说明），数据逐字节一致。默认不发 v1.1.0。
+2. **Zenodo 元数据（2026-11-05 已完成；2026-11-06 题名待同步）**：原记录 23955205 的其余字段已对齐，DOI 不变；2026-11-06 题名改为 *HARK: Human-Accountable, Authority-Typed Review Knowledge for Evidence-Bearing Document Review*，需在 Zenodo 网页只改 Title 一栏，不新建版本；同步前 verify.sh 会报 title mismatch。正文如实写归档提交 `cbe1d33`，快照在其后三个提交（DOI 写入、引语校验、发布说明），数据逐字节一致。默认不发 v1.1.0。
 3. **MON-001 / DOC-001 / hard 谓词**：由领域负责人复核（正文已把 hard 定位为「当前解析器可见的代理」，不是业务充分性判定）；若改谓词或标签，第 4 节全部数字需重算，不能沿用。
 4. **建议审稿人**（可选）：3 位、近三年无合作、不同机构；留空不影响送审。
 5. **投稿系统字段**：Funding 填 "This research received no external funding."；Data Availability 填仓库 + DOI；AI 使用按稿件披露口径填写。

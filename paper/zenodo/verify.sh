@@ -26,7 +26,7 @@ def check(label, condition, detail=""):
 
 print(f"Record {record.get('id')} | DOI {record.get('doi')} | state {record.get('state')}")
 
-check("title", m.get("title") == "HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review", repr(m.get("title")))
+check("title", m.get("title") == "HARK: Human-Accountable, Authority-Typed Review Knowledge for Evidence-Bearing Document Review", repr(m.get("title")))
 
 expected_names = ["Yang, Zhitong", "Wang, Qingxian", "Wang, Kai", "Li, Qi", "Song, Lin", "Jin, Dahai", "Wang, Hong"]
 names = [c.get("name") for c in m.get("creators", [])]

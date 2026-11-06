@@ -7,8 +7,8 @@
 
 ## 题名与作者
 
-**HARK：面向证据承载文档评审的操作权限分型评审知识**
-（HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review）
+**HARK：面向证据承载文档评审的可问责、操作权限分型评审知识**
+（HARK: Human-Accountable, Authority-Typed Review Knowledge for Evidence-Bearing Document Review）
 
 作者：Zhitong Yang（通讯，ORCID 0009-0002-1803-1529）、Qingxian Wang、Kai Wang、Qi Li、Lin Song、Dahai Jin、Hong Wang
 单位：State Grid Customer Service Center, Tianjin 300300, China
@@ -210,7 +210,7 @@ HARK 通过显式准则、操作权限路径、定位证据、临时发现与决
 
 ## 附：相对 2026-11-04 稿的主要差异
 
-1. **题名与主张收窄**：由「Human-Gated Evolution for LLM-Assisted Proposal Review」改为「Authority-Typed Review Knowledge for Evidence-Bearing Document Review」；不再声称「人在闸门内」已被实现，改为「操作权限分型 + 证据承载 + 可问责处置」。
+1. **题名与主张收窄**：由「Human-Gated Evolution for LLM-Assisted Proposal Review」改为「Human-Accountable, Authority-Typed Review Knowledge for Evidence-Bearing Document Review」；HARK 重新展开为 Human-Accountable Review Knowledge，不再声称「人在闸门内」已被实现，改为「操作权限分型 + 证据承载 + 可问责处置」。
 2. **审计后的口径纠正**：明确 30 份 policy Pass 中有 17 份含 minor 缺陷；「零误报」是观察属性而非门禁的效果；42/53 是门禁接受率而非证据有效率；43 条 hybrid TP 中 1 条来自结构性失败。
 3. **删除未复核的推断统计**：不再报告 CI、Wilcoxon、Holm、McNemar；统计量统一为描述性，并说明 253 处缺陷/2300 个规则—文档对不是独立文档样本。
 4. **三项实现边界显式化**：认证式人工批准、完整有效权限上限、内容寻址的配置快照与恢复，全部写成目标契约，并在摘要、方法、讨论、局限、结论五处一致出现。

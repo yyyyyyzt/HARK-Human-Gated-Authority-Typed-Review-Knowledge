@@ -31,11 +31,13 @@ Updated 2026-11-05.
 
 ## Human-facing items
 
-1. **Zenodo record metadata — done 2026-11-05.** The published record now has the paper title, the
-   seven authors in manuscript order with affiliations, the 2026-11-04 publication date, the revised
-   description, all seven keywords and the archived-commit related identifier. `paper/zenodo/verify.sh`
-   passes; the deposited file and the DOI are unchanged. `paper/zenodo/README.md` keeps the procedure
-   for future re-checks.
+1. **Zenodo record metadata — authors/affiliations/keywords done 2026-11-05; title sync pending.**
+   The published record has the seven authors in manuscript order with affiliations, the 2026-11-04
+   publication date, the revised description, all seven keywords and the archived-commit related
+   identifier. The 2026-11-06 re-expansion changes the paper title to *HARK: Human-Accountable,
+   Authority-Typed Review Knowledge for Evidence-Bearing Document Review*; set the same **Title** in
+   record 23955205 (DOI and file unchanged). Until then `paper/zenodo/verify.sh` reports a title
+   mismatch. `paper/zenodo/README.md` keeps the procedure for future re-checks.
 2. **CRediT roles** in `paper/mdpi-article/main.tex` — the roles now follow the confirmed hierarchy
    (Z.Y. lead; K.W./Q.W. validation; H.W. resources and supervision; remaining authors review and
    editing); each author should still confirm their own role before submission.

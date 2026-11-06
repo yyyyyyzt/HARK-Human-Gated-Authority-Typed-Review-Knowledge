@@ -11,8 +11,8 @@
 
 | 文件 | 用途 | 状态 |
 |---|---|---|
-| [`cover-letter.md`](cover-letter.md) | 投稿系统的 cover letter 正文（英文），含贡献、有界证据与 target contracts 声明 | 2026-11-05 按 23 页修订稿重写；**发布前须作者通读**，尤其不要改回旧题的「human-gated」表述 |
-| [`cover-letter.pdf`](cover-letter.pdf) | 上述正文的 A4 单页 PDF（10.5pt Times，1 页），可直接上传投稿系统 | 2026-11-05 生成，sha256 `a7eaed87…` |
+| [`cover-letter.md`](cover-letter.md) | 投稿系统的 cover letter 正文（英文），含贡献、有界证据与 target contracts 声明 | 2026-11-06 按 23 页定稿重写；**发布前须作者通读**，尤其不要改回旧题的「human-gated」表述 |
+| [`cover-letter.pdf`](cover-letter.pdf) | 上述正文的 A4 单页 PDF（10.5pt Times，1 页），可直接上传投稿系统 | 2026-11-06 生成，72,733 B，sha256 `d0d76e87…` |
 | [`submission-drafts.md`](submission-drafts.md) | 上传清单、Section/Topic 对齐、补充材料 caption、图形摘要说明、三条禁写、投稿前人工确认项 | 与修订稿同步 |
 | [`zh-translation.md`](zh-translation.md) | 修订稿的中文逐节压缩译述（含全部结果数字与新口径），供内部审阅与单位备案 | **非投稿件**；正式投稿只用英文 |
 | [`graphical-abstract.tex`](graphical-abstract.tex) / [`graphical-abstract.png`](graphical-abstract.png) | 图形摘要（1100×560 PNG，投稿系统单独上传） | 2026-11-05 重新生成：`Typed rules, located evidence, accountable disposition` |
@@ -21,7 +21,7 @@
 
 ## 上传时用到的具体数字（与稿件一致）
 
-- 稿件：**23 页 A4**，摘要 **191 词**，7 个关键词，7 个一级节，**12 张表、2 幅 TikZ 图**、1 段算法伪代码，**41 条**内联参考文献（ACS 数字制，按首引顺序 1–41）。
+- 稿件：**23 页 A4**，摘要 **200 词**，7 个关键词，7 个一级节，**12 张表、2 幅 TikZ 图**、1 段算法伪代码，**41 条**内联参考文献（ACS 数字制，按首引顺序 1–41）。
 - 源码包：`../mdpi-article/main.zip`，**19 个文件**（含 `Definitions/`、`main.pdf`、修订记录），可直接上传。
 - 正文关键结果：micro-F1 **0.798**（B0 关键词 **0.222**），TP/FP/FN **168/0/85**（B0 **47/124/206**），结论一致率 **85%**（κ **0.763**），68/85 漏检转待处理，门禁接受 **42/53**，23 份期望 Fail 中 **4** 份被判 Pass，θ=3。
 - 规则包：28 条 = 10 hard + 13 hybrid + 5 soft；4 条 blocker 全为 hybrid。
@@ -35,7 +35,7 @@
 ## 投稿前仍需人确认
 
 1. **CRediT 已按作者确认的分工重排**（`main.tex` 声明区）：Z.Y. 主导概念、方法、软件、分析、调查、数据、初稿、可视化与项目管理；K.W.、Q.W. 为 Validation；H.W. 另担 Resources 与 Supervision；其余作者仅 Writing—Review & Editing。投稿前请每位作者确认自己的角色。
-2. **Zenodo 元数据（已完成）**：2026-11-05 在原记录 23955205 上修正，DOI 不变；标题、7 位作者顺序与单位、发布日期、描述、7 个关键词、归档提交关联均已对齐，[`../zenodo/verify.sh`](../zenodo/verify.sh) 全项通过。归档文件未改。正文写归档提交 `cbe1d33`，快照在其后三个提交。
+2. **Zenodo 元数据（2026-11-05 已完成；2026-11-06 题名待同步）**：原记录 23955205 的作者、单位、发布日期、描述、关键词、归档提交关联均已对齐，DOI 不变，归档文件未改。2026-11-06 将题名改为 *HARK: Human-Accountable, Authority-Typed Review Knowledge for Evidence-Bearing Document Review*，需在 Zenodo 网页把 **Title** 一栏同步为新题名；同步前 [`../zenodo/verify.sh`](../zenodo/verify.sh) 会报 title mismatch。正文写归档提交 `cbe1d33`，快照在其后三个提交。
 3. **MON-001 / DOC-001 / hard 谓词**的领域复核（§4.5 已把这些写成解析器可见代理，而非业务充分性判定）。
 4. **建议审稿人**：cover letter 未列，投稿系统里按 MDPI 要求填写（避免与作者同机构、近三年合作者）。
 5. 系统字段：文章号/卷期/日期留空由编辑部填写；版权协议选 CC BY 4.0；ORCID 仅通讯作者展示。

@@ -1,7 +1,7 @@
 Article
 
-HARK: Authority-Typed Review Knowledge for
-Evidence-Bearing Document Review
+HARK: Human-Accountable, Authority-Typed Review
+Knowledge for Evidence-Bearing Document Review
 Zhitong Yang 1 , Qingxian Wang 1 , Kai Wang 1 , Qi Li 1 , Lin Song 1 , Dahai Jin 1 , Hong Wang 1
 1
 
@@ -14,23 +14,22 @@ Abstract
 
 1
 
-Rule-governed document review requires explicit criteria, source-addressable evidence, and
-a distinction between provisional findings and accountable human disposition. We present
-HARK, an architecture and an executed system that represent review criteria as rules with
-hard, hybrid, or soft operational authority. Deterministic verifiers produce checks and
-candidate spans; a positional evidence gate checks submitted quotations; a policy derives
-suggested verdicts; and decision records support feedback storage. Technical solution
-proposals are the sole empirical instantiation. On a fixed developmental regression corpus
-of 100 synthetic proposals with 253 planted defects, the combined configuration achieves
-micro-F1 0.798 versus 0.222 for a keyword baseline and 85% policy-verdict agreement. Of
-70 policy-non-Pass proposals, 15 are under-called and 10 receive Pass, including four of 23
-expected Fail proposals. Sixty-eight of 85 misses enter pending review, without evidence of
-human resolution. Five development-team runs on three internal proposals demonstrate
-workflow and persistence, not independent review quality or learning gains. The evaluated
-snapshot does not enforce authenticated human approval, a complete effective-authority
-ceiling, or content-addressed configuration recovery. These remain target contracts rather
-than implemented guarantees. The contribution is an executable review architecture with
-bounded comparative results and explicit implementation boundaries.
+Rule-governed document review requires explicit criteria, source-addressable evidence,
+and a distinction between provisional findings and accountable human disposition. We
+present HARK (Human-Accountable Review Knowledge), an architecture and an executed
+system that represent review criteria as rules with hard, hybrid, or soft operational authority. Deterministic verifiers produce checks and candidate spans; a positional evidence gate
+checks submitted quotations; a policy derives suggested verdicts; and decision records
+support feedback storage. Technical proposals are the sole empirical case. On a fixed
+developmental regression corpus of 100 synthetic proposals with 253 planted defects, the
+combined configuration achieves micro-F1 0.798 versus 0.222 for a keyword baseline and
+85% policy-verdict agreement. Of 70 policy-non-Pass proposals, 15 are under-called and
+10 receive Pass, including four of 23 expected Fail proposals. Sixty-eight of 85 misses
+enter pending review, without evidence of human resolution. Five development-team
+runs on three internal proposals, drawn from a multi-year workflow handling over 100
+proposals monthly, demonstrate workflow and persistence, not independent review quality
+or learning gains. The evaluated snapshot does not enforce authenticated human approval, a complete effective-authority ceiling, or content-addressed configuration recovery.
+These remain target contracts rather than implemented guarantees. The contribution is an
+executable architecture with bounded results and explicit boundaries.
 
 2
 
@@ -64,31 +63,30 @@ Commons Attribution (CC BY) license.
 16
 17
 18
-
 19
-20
 
+20
 21
 
-Rule-governed, evidence-bearing document review combines three conditions: explicit review criteria, a source-addressable document, and a distinction between provisional
-findings and accountable human disposition. Checklist-based inspection provides a foundation for this task [1,2]. The computational problem is not only to generate comments,
-but to represent which criteria a system can check, what evidence it can supply, and which
-decisions remain with a reviewer. We study technical solution proposals for a large utility’s
-online service platform: documents describing intended architecture, interfaces, data flows,
-implementation plans, and risks before implementation. Assurance cases, compliance
-dossiers, and architecture designs are potential applications of the same task formulation,
-not domains validated in this study. Explicit review criteria also arise outside internal
-engineering practice: the EU Artificial Intelligence Act, for example, conditions market access for high-risk systems on documented risk management, technical documentation and
-conformity assessment [3], which makes the inspectability of review criteria a regulatory as
-well as an engineering concern.
+22
 
-Version November 5, 2026 submitted to Computers
+Rule-governed, evidence-bearing document review combines three conditions: explicit
+review criteria, a source-addressable document, and a distinction between provisional findings and accountable human disposition. Checklist-based inspection provides a foundation
+for this task [1,2]. The computational problem is not only to generate comments, but to represent which criteria a system can check, what evidence it can supply, and which decisions
+remain with a reviewer. We study technical solution proposals for a large utility’s online
+service platform: documents describing intended architecture, interfaces, data flows, implementation plans, and risks before implementation. The organisation’s review workflow
+handles more than 100 such proposals per month and has accumulated several thousand
+review records over several years; the evidence reported here is a bounded instrumented
+sample, not an audit of that history. Assurance cases, compliance dossiers, and architecture
+designs are potential applications of the same task formulation, not domains validated in
+this study. Explicit review criteria also arise outside internal engineering practice: the EU
+
+Version November 6, 2026 submitted to Computers
 
 3
 
 https://doi.org/10.3390/computers1010000
 
-22
 23
 24
 25
@@ -103,10 +101,14 @@ https://doi.org/10.3390/computers1010000
 34
 35
 
-Version November 5, 2026 submitted to Computers
+Version November 6, 2026 submitted to Computers
 
 2 of 23
 
+Artificial Intelligence Act, for example, conditions market access for high-risk systems on
+documented risk management, technical documentation and conformity assessment [3],
+which makes the inspectability of review criteria a regulatory as well as an engineering
+concern.
 The motivating prototype represented 24 expert rules through keyword lists and
 prompts, without a persistent feedback layer. This arrangement made it difficult to distinguish a requirement’s mention from its satisfaction or to connect a proposed finding
 to an inspectable decision path. Its keyword component is represented by baseline B0
@@ -133,24 +135,24 @@ but the ability to execute a lexical test must not be confused with complete dec
 its business requirement. Second, useful decision history may inform later reviews, yet
 recording a decision, authorising a knowledge change, and demonstrating improved review quality are different accomplishments. A system must expose these boundaries rather
 than infer human approval from a name or infer learning benefits from stored feedback.
-We present HARK, which retains the prototype name without implying a verified
-human-gating guarantee, and examine its design, its evaluated implementation snapshot,
-and its validation boundaries. The system is realised as an extension of a general-purpose
-agent host: a host-independent review engine carries the representation and decision logic,
-and a thin host integration supplies storage, tools and delivery, which is what makes the
-architecture reusable beyond a single deployment. The paper makes four contributions:
+We present HARK (Human-Accountable Review Knowledge) and examine its design,
+its evaluated implementation snapshot, and its validation boundaries. Accountability here
+refers to the recorded human disposition and the inspectable knowledge state, not to an
+enforced identity-authentication guarantee. The system is realised as an extension of a
+general-purpose agent host: a host-independent review engine carries the representation
+and decision logic, and a thin host integration supplies storage, tools and delivery, which is
+what makes the architecture reusable beyond a single deployment. The paper makes four
+contributions:
 
 36
 
 (1)
 
-72
+78
 
 (2)
 
 (3)
-
-(4)
 
 A task formulation for rule-governed, evidence-bearing document review and a rule
 representation that separates evidence production, provisional findings, suggested
@@ -160,10 +162,6 @@ absence records, quotation checks, and a deterministic verdict policy, together 
 the limits of those routes in the evaluated snapshot (Sections 3.2–3.5).
 A host-independent engine with a thin deployment integration, carrying feedback
 records, overrides, exemplars and review-state storage, and distinguished from the
-target contracts for authenticated approval, complete effective-authority control, and
-content-addressed recovery (Sections 3.6 and 3.8).
-A fixed synthetic end-to-end regression comparison, a traceability and pendingworkload analysis, and development-team workflow evidence from three internal
-proposals in five runs (Section 4).
 
 https://doi.org/10.3390/computers1010000
 
@@ -202,23 +200,31 @@ https://doi.org/10.3390/computers1010000
 69
 70
 71
-
+72
 73
 74
 75
 76
 77
-78
+
 79
 80
 81
 82
 83
 84
+85
 
-Version November 5, 2026 submitted to Computers
+Version November 6, 2026 submitted to Computers
 
 3 of 23
+
+target contracts for authenticated approval, complete effective-authority control, and
+content-addressed recovery (Sections 3.6 and 3.8).
+A fixed synthetic end-to-end regression comparison, a traceability and pendingworkload analysis, and development-team workflow evidence from three internal
+proposals in five runs, within a multi-year workflow handling more than 100 proposals per month (Section 4).
+
+86
 
 Four research questions organise the evaluation. RQ1: How are review knowledge
 and operational authority represented, and where are the implementation boundaries?
@@ -236,6 +242,11 @@ findings can affect the recommendation before human adoption, and the final-verd
 tool requires a reviewer string rather than authenticated approval. The stricter separation
 of authority and complete configuration recovery described as target contracts are not
 implemented guarantees.
+
+92
+
+(4)
+
 proposal
 Markdown
 
@@ -262,14 +273,12 @@ judge
 flag / model route
 candidate snippets
 
-85
-86
 87
 88
 89
 90
 91
-92
+
 93
 94
 95
@@ -279,6 +288,13 @@ candidate snippets
 99
 100
 101
+102
+103
+104
+105
+106
+107
+108
 
 evidence gate
 quote located
@@ -302,11 +318,11 @@ remain target contracts.
 
 2. Related Work
 
-102
+109
 
 Rule-governed, evidence-bearing document review.
 
-103
+110
 
 Document inspection has a long history of using explicit review procedures and
 checklists [1,2]. Requirements engineering adds quality criteria, smell detection, and
@@ -315,35 +331,33 @@ denote a task in which an organisation supplies review requirements, a system as
 proposed findings with evidence in the submitted material, and an accountable reviewer
 resolves issues that the automated procedure cannot settle. Requirements specifications,
 policy-governed contracts, and technical solution proposals provide different instances of
+
+111
+
+https://doi.org/10.3390/computers1010000
+
+112
+113
+114
+115
+116
+117
+
+Version November 6, 2026 submitted to Computers
+
+4 of 23
+
 this task [7–9]. Security requirements and industrial certification research further illustrate
 the importance of explicit review criteria [10,11], while traceability has also been studied for
 an in-the-wild augmented-reality learning service [12]. These sources motivate the broader
 task setting; their existence does not establish that HARK transfers across those domains.
 Technical solution proposal review remains the only empirical case in this study.
 
-104
-
-https://doi.org/10.3390/computers1010000
-
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-
-Version November 5, 2026 submitted to Computers
-
-4 of 23
+118
 
 Requirements quality and operational verifiability.
 
-116
+123
 
 Requirements-smell analysis detects cues such as weak wording, placeholders, and
 missing units [6]. Veizaga et al. combine smell detection with recommendations based
@@ -358,11 +372,11 @@ be verifiable in principle while remaining outside this prototype’s determinis
 capability. The tier therefore specifies output eligibility within an implementation, not an
 intrinsic quality ranking of the requirement.
 
-117
+124
 
 LLM-assisted requirements review and evaluation.
 
-131
+138
 
 Reviews of LLM applications in requirements engineering describe uses across extraction, analysis, and specification [15]; a dual-perspective review distinguishes using LLMs
 for code verification from verifying their generated outputs [16]. MARV uses multiple role
@@ -381,47 +395,41 @@ and task conditions under which a mechanism was tested. HARK’s deterministic-j
 evaluation addresses this bounded mechanism question, not the capabilities of arbitrary
 deployed LLMs.
 
-132
+139
 
 Neuro-symbolic policy review.
 
-151
+158
 
 Neuro-symbolic integration offers several ways for symbolic components to constrain
 learned components [22]. PolicyGuard compiles organisational policies into typed relational rules, uses LLM extraction to ground atoms from evidence, and applies symbolic rule
 evaluation [9]. Its v1 report also documents legal-expert refinement during review-engine
 construction and validation: Appendix G describes editing extraction questions, correcting rule-combination logic, and treating a triggered finding as a case-specific exception
 while preserving the audit trail. It is therefore inaccurate to characterise PolicyGuard as
-having no feedback or human maintenance. The comparison instead concerns the role of
-the evidence-producing component and the lifecycle of review knowledge: PolicyGuard
-reports atom grounding, symbolic evaluation, and local expert corrections; HARK studies
-rule-specific eligibility for automatic findings and a stored review-feedback layer. These
 
-152
+159
 
 https://doi.org/10.3390/computers1010000
 
-118
 119
 120
 121
 122
-123
-124
+
 125
 126
 127
 128
 129
 130
-
+131
+132
 133
 134
 135
 136
 137
-138
-139
+
 140
 141
 142
@@ -433,22 +441,29 @@ https://doi.org/10.3390/computers1010000
 148
 149
 150
-
+151
+152
 153
 154
 155
 156
 157
-158
-159
+
 160
 161
 162
+163
+164
+165
 
-Version November 5, 2026 submitted to Computers
+Version November 6, 2026 submitted to Computers
 
 5 of 23
 
+having no feedback or human maintenance. The comparison instead concerns the role of
+the evidence-producing component and the lifecycle of review knowledge: PolicyGuard
+reports atom grounding, symbolic evaluation, and local expert corrections; HARK studies
+rule-specific eligibility for automatic findings and a stored review-feedback layer. These
 are different architectural choices, not evidence of a general deficit in PolicyGuard or proof
 that HARK has implemented complete human-controlled evolution.
 Galitsky and Rybalov study symbolic checking of LLM-generated fault explanations
@@ -458,11 +473,11 @@ Nor do these examples justify classifying all neuro-symbolic systems as assignin
 authority to every learned output. HARK’s relevant design choice is to make the eligible
 output and its evidence conditions explicit for each rule before reviewing a document.
 
-163
+166
 
 Industrial review and editable feedback knowledge.
 
-171
+178
 
 Code review provides adjacent evidence about learning from reviewer reactions,
 although its artefacts and evaluation units differ from document review. Pornprasit and
@@ -482,11 +497,11 @@ content used for an earlier review. Conversely, those capabilities cannot be dec
 feedback should be compared with these concrete mechanisms, not with a homogeneous
 category of supposedly opaque industrial agents.
 
-172
+179
 
 Grounding, non-detection, and pending decisions.
 
-192
+199
 
 Attributed generation links claims to cited sources [29]. Claim-level evaluation of
 verbatim citation distinguishes quotation compliance from whether the quoted passage
@@ -499,29 +514,23 @@ declared checking scope; it is not proof that the requirement is unsatisfied in 
 that relevant content is absent from every representation of the document. HARK reserves
 such records for verifier output rather than accepting a model-generated assertion of absence. When a hybrid rule lacks usable candidates, or a proposed finding does not meet its
 evidence conditions, an explicit pending state preserves the unresolved obligation instead
-of turning it into either a pass or a confirmed failure. Documents remain untrusted inputs:
-prompt-injection attacks against LLM judges [31] motivate this separation, but an evidence
-gate alone does not establish resistance to injection or protect every write path.
 
-193
+200
 
 https://doi.org/10.3390/computers1010000
 
-164
-165
-166
 167
 168
 169
 170
-
+171
+172
 173
 174
 175
 176
 177
-178
-179
+
 180
 181
 182
@@ -534,14 +543,14 @@ https://doi.org/10.3390/computers1010000
 189
 190
 191
-
+192
+193
 194
 195
 196
 197
 198
-199
-200
+
 201
 202
 203
@@ -551,14 +560,24 @@ https://doi.org/10.3390/computers1010000
 207
 208
 209
+210
+211
+212
+213
 
-Version November 5, 2026 submitted to Computers
+Version November 6, 2026 submitted to Computers
 
 6 of 23
 
+of turning it into either a pass or a confirmed failure. Documents remain untrusted inputs:
+prompt-injection attacks against LLM judges [31] motivate this separation, but an evidence
+gate alone does not establish resistance to injection or protect every write path.
+
+214
+
 Human control, memory, and version requirements.
 
-210
+217
 
 Human-in-the-loop research distinguishes learning arrangements according to how
 control is allocated between system and expert [32]. HARK adopts this control question at
@@ -579,11 +598,11 @@ permission-ceiling enforcement, and content replay are not yet implemented. Cons
 feedback storage and version labels are reported mechanisms, not evidence that every
 update is human-authorised, reversible, or beneficial over time.
 
-211
+218
 
 Positioning and contribution boundary.
 
-230
+237
 
 Table 1 compares concrete reports or explicitly labelled family illustrations, rather
 than scoring entire research traditions. The positive contribution studied here is a system
@@ -594,15 +613,11 @@ human-gated lifecycle has been achieved. The measurements reported later concern
 implemented proposal-review prototype and its stated judge; broader document classes
 and strict human-authorised evolution remain outside the demonstrated scope.
 
-231
+238
 
-212
-213
-214
 215
 216
-217
-218
+
 219
 220
 221
@@ -614,23 +629,30 @@ and strict human-authorised evolution remain outside the demonstrated scope.
 227
 228
 229
-
+230
+231
 232
 233
 234
 235
 236
-237
-238
+
 239
+240
+241
+242
+243
+244
+245
+246
 
 3. Materials and Methods
 
-240
+247
 
 3.1. Task Formulation and Scope
 
-241
+248
 
 We study rule-governed, evidence-bearing document review. An instance consists of a
 source-addressable document d, an explicit rule package K, a policy P for aggregating
@@ -644,22 +666,11 @@ The empirical instance is preliminary review of Chinese technical solution propo
 before construction. Its primary business object is the adequacy of the proposed design, not
 proof that the proposed implementation has already been deployed. A rule must specify
 the lifecycle stage, applicability, expected evidence and predicate being checked. We retain
-the released package and labels for the retrospective evaluation, rather than silently relabel
-them to fit this formulation. Where its predicates conflate design and implementation, or
-parser support with business compliance, the discrepancy is reported and must be resolved
-before a revised package is evaluated.
 
-242
+249
 
 https://doi.org/10.3390/computers1010000
 
-243
-244
-245
-246
-247
-248
-249
 250
 251
 252
@@ -668,8 +679,11 @@ https://doi.org/10.3390/computers1010000
 255
 256
 257
+258
+259
+260
 
-Version November 5, 2026 submitted to Computers
+Version November 6, 2026 submitted to Computers
 
 7 of 23
 
@@ -797,47 +811,45 @@ permission ceiling, and
 content replay not yet
 implemented
 
+the released package and labels for the retrospective evaluation, rather than silently relabel
+them to fit this formulation. Where its predicates conflate design and implementation, or
+parser support with business compliance, the discrepancy is reported and must be resolved
+before a revised package is evaluated.
 Four requirements guide the design: rule-linked evidence and explicit non-detection
 records; rule-specific eligibility to contribute a finding; a visible distinction between confirmed findings, unresolved items and final disposition; and inspectable feedback with
 controlled activation and recoverable configuration. These are design requirements, not
 four completed implementation guarantees. Table 2 separates the evaluated prototype
 from the stronger deployment contract.
 
-258
+261
 
 3.2. Operational Authority Types
 
-264
+271
 
 Each YAML rule declares an identifier, dimension, severity, tier, question, rationale,
 remediation, applicability condition, verifier specification and status. A shared lexicon supplies heading aliases, placeholder and negation tokens, and keyword families. The package
 contains 28 rules: 10 hard, 13 hybrid and 5 soft. Seven have applicability preconditions;
-the lexicon contains 25 keyword families, 11 heading groups, 12 placeholder tokens and 11
-negation tokens.
-The tier is an operational routing declaration. A hard rule uses a decisive implemented
-predicate; a hybrid rule combines deterministic checks or candidate localisation with a
-judgement step; a soft rule raises an unresolved item. Decisive execution of a predicate
 
-265
+272
 
 https://doi.org/10.3390/computers1010000
 
-259
-260
-261
 262
 263
-
+264
+265
 266
 267
 268
 269
 270
-271
-272
-273
 
-Version November 5, 2026 submitted to Computers
+273
+274
+275
+
+Version November 6, 2026 submitted to Computers
 
 8 of 23
 
@@ -869,17 +881,27 @@ signing
 Content-addressed immutable configurations, approval binding and demonstrated
 restoration
 
+the lexicon contains 25 keyword families, 11 heading groups, 12 placeholder tokens and 11
+negation tokens.
+The tier is an operational routing declaration. A hard rule uses a decisive implemented
+predicate; a hybrid rule combines deterministic checks or candidate localisation with a
+judgement step; a soft rule raises an unresolved item. Decisive execution of a predicate
 does not prove that the predicate fully captures the business requirement. For example, a
 lexical declaration of a load-test plan does not establish its scope, responsibilities, timing or
 performance criteria. Assigning a hard tier to that proxy cannot make those unmeasured
 properties automatically verifiable. Domain owners must first define the requirement and
 then specify which subpredicates the verifier actually covers.
 
-274
-275
 276
 277
 278
+279
+280
+281
+282
+283
+284
+285
 
 Table 3. Default routes in the evaluated package. These routes describe finding eligibility under the
 frozen configuration, not authentication of human approval.
@@ -939,27 +961,22 @@ requirement, not an evaluated capability.
 In the default registration path, absence evidence is verifier-owned: a model cannot
 establish non-detection by inventing a quotation such as “not mentioned”. A verifier
 absence record identifies the expected section and the failed search predicate; it does not
+
+https://doi.org/10.3390/computers1010000
+
+286
+287
+288
+
+Version November 6, 2026 submitted to Computers
+
+9 of 23
+
 establish semantic absence outside the parser’s supported input and vocabulary. Hybrid
 non-detection defaults to pending. Candidate existence is not satisfaction, and lack of a
 registered finding is not a verified pass.
 Package validation rejects inconsistent verifier/tier combinations, missing lexicon
 references and duplicate identifiers. This is useful static validation but does not enforce
-
-https://doi.org/10.3390/computers1010000
-
-279
-280
-281
-282
-283
-284
-285
-286
-
-Version November 5, 2026 submitted to Computers
-
-9 of 23
-
 the same restrictions after every learned edit. The evaluated update paths can change
 no-candidate behaviour, activate a valid hybrid draft, alter severity and reset overrides
 without preserving a complete effective-authority ceiling. Consequently, immutability of
@@ -969,14 +986,19 @@ hybrid; the ten hard rules are major or minor. This distribution motivates tier-
 failure analysis, but is a characteristic of this checklist, not a general inverse relationship
 between severity and verifiability.
 
-287
-288
 289
 290
 291
 292
 293
 294
+295
+296
+297
+298
+299
+300
+301
 
 Table 4. Composition of the frozen package used in the retrospective evaluation.
 Dimension
@@ -1085,7 +1107,7 @@ Total
 
 3.3. Parsing, Verifiers and Business Predicates
 
-295
+302
 
 The review engine accepts Markdown. Word and PDF conversion occurs upstream
 through the host’s office tooling; no conversion-fidelity evaluation is reported here. The
@@ -1095,13 +1117,13 @@ and whitespace collapsing, with a map back to the source. Chinese and Latin sent
 terminators and table-cell boundaries define candidate units. Absence records use an
 expected section and a zero-length source range.
 
-296
-297
-298
-299
-300
-301
-302
+303
+304
+305
+306
+307
+308
+309
 
 Table 5. Implemented verifier families. An established parser predicate is not necessarily the complete
 business predicate. Uses count occurrences in verifier trees.
@@ -1161,34 +1183,30 @@ Negation checks use a window around a matched family; placeholder checks combine
 lexical tokens and structural cues. These choices recover defects that substring presence
 misses, but their correctness remains relative to the declared predicate and lexicon. The
 frozen diagram rules report an image-only diagram as a failure because they require
+
+https://doi.org/10.3390/computers1010000
+
+310
+311
+312
+313
+
+Version November 6, 2026 submitted to Computers
+
+10 of 23
+
 Mermaid. That result supports compliance with a declared machine-readable format, not a
 finding that the depicted design is missing or wrong. Unless an organisation requires that
 format, unsupported image input should become needs manual review, rather than business
 noncompliance. This correction changes rule behaviour and may require label migration
-
-https://doi.org/10.3390/computers1010000
-
-303
-304
-305
-306
-307
-308
-309
-310
-
-Version November 5, 2026 submitted to Computers
-
-10 of 23
-
 and reevaluation; the retrospective counts below are not presented as results of such a
 corrected package.
 
-311
+314
 
 3.4. Located-Evidence Gate
 
-313
+320
 
 Model findings use a registration tool. The gate rejects hard-rule registration, disallows
 model-produced absence evidence, checks normalised quote length (8–300 characters),
@@ -1196,14 +1214,18 @@ locates the quotation and checks its relation to a hybrid candidate. Unknown or 
 submissions remain pending rather than gaining automatic eligibility. Rejection reasons
 are stored for inspection and possible repair.
 
-314
-
-312
+321
 
 315
 316
 317
 318
+319
+
+322
+323
+324
+325
 
 Algorithm 1: Gate in the evaluated prototype (simplified). Scope membership is overlap,
 not complete containment; location does not establish entailment.
@@ -1257,29 +1279,29 @@ tests and a new evaluation. We do not attribute zero false positives or prompt-i
 resistance to this gate. The reported 42/53 fraction is gate acceptance, not semantic evidence
 validity.
 
-319
+326
 
 3.5. Recommendation and Final Disposition
 
-326
+333
 
 Let C contain findings with an eligible route (hard, hybrid or expert) and status
 confirmed, adopted or rewritten (the accept action sets the adopted state). Under the frozen
 
-327
+334
 
 https://doi.org/10.3390/computers1010000
 
-320
-321
-322
-323
-324
-325
-
+327
 328
+329
+330
+331
+332
 
-Version November 5, 2026 submitted to Computers
+335
+
+Version November 6, 2026 submitted to Computers
 
 11 of 23
 
@@ -1296,8 +1318,8 @@ P(C ) =
 
 
 
-329
-330
+336
+337
 
 ∃i ∈ C : severity(i ) = blocker,
 
@@ -1309,7 +1331,7 @@ Pass,
 
 otherwise.
 
-331
+338
 
 Pending and soft items do not count; dismissed findings leave C. Opinion-channel findings
 become numbered clauses; checklist-channel findings form a correction annex, but both
@@ -1322,11 +1344,11 @@ current implementation therefore supports a trusted-operator workflow, not a dem
 software-enforced human-signature boundary. Suggested/final verdict disagreement may
 be recorded, but cannot by itself measure rubber-stamping.
 
-332
+339
 
 3.6. Feedback Records and Configuration Recovery
 
-343
+350
 
 The review preset prescribes preliminary review, expert disposition and finalisation.
 It asks the agent to present findings in small batches with quotes and suggested remedies;
@@ -1335,24 +1357,24 @@ can subsequently be recalled. The software stores feedback; this is not evidence
 judgements improve, or that the person recorded as operator genuinely approved each
 action.
 
-344
+351
 
-333
-334
-335
-336
-337
-338
-339
 340
 341
 342
-
+343
+344
 345
 346
 347
 348
 349
+
+352
+353
+354
+355
+356
 
 Table 6. Storage objects in the prototype. Write paths describe implemented operations, not independently authenticated human acts.
 Object
@@ -1401,24 +1423,24 @@ deleting overrides.
 
 https://doi.org/10.3390/computers1010000
 
-350
-351
-352
-353
-354
-355
-356
 357
 358
 359
+360
+361
+362
+363
+364
+365
+366
 
-Version November 5, 2026 submitted to Computers
+Version November 6, 2026 submitted to Computers
 
 12 of 23
 
 3.7. Required Human-Approval and Recovery Contract
 
-360
+367
 
 For deployment under a software-enforced human-approval claim, we specify a
 stronger contract, not an already implemented extension. Effective authority is a tuple of
@@ -1444,11 +1466,11 @@ operates outside the boundary that the review layer can defend. Scoped reading m
 reduce exposed context, but does not establish protection against prompt injection, semantic
 manipulation or exfiltration [31,37].
 
-361
+368
 
 3.8. Implementation and Evaluated Version
 
-387
+394
 
 HARK [39] is delivered as an extension package for a general-purpose conversational
 agent host, which supplies model access, file conversion, structured questions, delivery,
@@ -1470,17 +1492,10 @@ proposed approval/recovery contract. The stored outputs were reaggregated withou
 changing inputs, labels, rules or runtime behaviour, so the reported figures describe that
 frozen snapshot rather than a later code state. A future rule, gate, policy or state-machine
 
-388
+395
 
 https://doi.org/10.3390/computers1010000
 
-362
-363
-364
-365
-366
-367
-368
 369
 370
 371
@@ -1499,14 +1514,14 @@ https://doi.org/10.3390/computers1010000
 384
 385
 386
-
+387
+388
 389
 390
 391
 392
 393
-394
-395
+
 396
 397
 398
@@ -1519,8 +1534,15 @@ https://doi.org/10.3390/computers1010000
 405
 406
 407
+408
+409
+410
+411
+412
+413
+414
 
-Version November 5, 2026 submitted to Computers
+Version November 6, 2026 submitted to Computers
 
 13 of 23
 
@@ -1582,20 +1604,20 @@ adapters and labelled evaluation, not merely a second YAML file.
 
 4. Results
 
-408
-409
-410
-411
-412
-413
-414
-
 415
+416
+417
+418
+419
+420
+421
+
+422
 
 4.1. Retrospective Evaluation Setup
 Corpus and labels.
 
-416
+423
 
 The released generator (seed 20261029) produced 100 synthetic proposals and 253
 planted defects over 23 verifiable rules: 98 absent, 37 negated, 52 placeholder and 66
@@ -1614,11 +1636,11 @@ corpus is developmental regression evidence, not an untouched semantic-review te
 The released labels are retained for this retrospective analysis, including the lifecycle and
 format ambiguities discussed in Section 3.3.
 
-418
+425
 
 Configurations.
 
-435
+442
 
 B0 uses rule-specific substrings without the structural and negation handling of the
 combined system, applying the same aggregation policy to its outputs. S-full uses the
@@ -1627,19 +1649,12 @@ finding when a candidate carries a negation, assertion-only or placeholder cue. 
 interpret design adequacy. S−verifier widens the hybrid statement search to the whole
 document. B0 does not invoke this judge; the comparison changes multiple mechanisms
 
-436
+443
 
-417
+424
 
 https://doi.org/10.3390/computers1010000
 
-419
-420
-421
-422
-423
-424
-425
 426
 427
 428
@@ -1649,14 +1664,21 @@ https://doi.org/10.3390/computers1010000
 432
 433
 434
-
+435
+436
 437
 438
 439
 440
 441
 
-Version November 5, 2026 submitted to Computers
+444
+445
+446
+447
+448
+
+Version November 6, 2026 submitted to Computers
 
 14 of 23
 
@@ -1664,11 +1686,11 @@ and cannot isolate a causal typing effect. Memory is present in the software but
 outputs do not measure a treatment effect of recalled feedback. No live LLM configuration
 was run for the reported corpus scores.
 
-442
+449
 
 Metrics and analysis provenance.
 
-445
+452
 
 Alignment is by (document, rule). We recomputed micro-precision, micro-recall
 and micro-F1 from summed true positives (TP), false positives (FP) and false negatives
@@ -1682,21 +1704,21 @@ regenerates the corpus nor reruns the engine, and reported statistics are descri
 than inferential. The document is the observational unit; neither 253 defects nor 2300
 rule–document pairs are independent document samples.
 
-446
+453
 
-443
-444
-
-447
-448
-449
 450
 451
-452
-453
+
 454
 455
 456
+457
+458
+459
+460
+461
+462
+463
 
 Table 8. Descriptive results from stored outputs on the fixed developmental corpus. No model
 capability, isolated typing effect or repaired approval contract is measured.
@@ -1750,7 +1772,7 @@ S−verifier
 
 4.2. Combined-Configuration Trade-offs (RQ2)
 
-457
+464
 
 Micro-F1 rises from 0.2217 to 0.7981, a difference of 0.5764. Mean per-document
 F1 rises from 0.2161 to 0.7798, a paired mean difference of 0.5636. The earlier rounded
@@ -1760,13 +1782,13 @@ this combined configuration over this simple keyword baseline on shared developm
 templates. It does not establish superiority over richer deterministic baselines, arbitrary
 prompted models or human review.
 
-458
-459
-460
-461
-462
-463
-464
+465
+466
+467
+468
+469
+470
+471
 
 Table 9. Retrospective detection by operational tier and severity. Grouping identifies where errors
 occur; it does not establish that the tier caused the result.
@@ -1844,19 +1866,19 @@ showing that automatic eligibility can coexist with inadequate proxy predicates.
 
 https://doi.org/10.3390/computers1010000
 
-465
-466
-467
-468
-469
+472
+473
+474
+475
+476
 
-Version November 5, 2026 submitted to Computers
+Version November 6, 2026 submitted to Computers
 
 15 of 23
 
 4.3. Traceability and Pending Workload (RQ3)
 
-470
+477
 
 Sixty-eight of 85 missed planted defects occur in pending hybrid document–rule pairs
 (80% referral coverage). Seventeen remain unsurfaced by the evaluated automatic routes.
@@ -1867,14 +1889,14 @@ items. Sixty-eight of these 932 pairs match planted defects (7.3% label density)
 pairs must not be called false positives: a pending item asserts uncertainty, not a defect.
 Nor is that density a measure of review time, which was not measured.
 
-471
-472
-473
-474
-475
-476
-477
 478
+479
+480
+481
+482
+483
+484
+485
 
 Table 10. Routes of planted defects. “Unsurfaced” refers to the evaluated machine routes, not to what
 a human could find by reading the document. Pending is not a confirmed finding.
@@ -1932,30 +1954,30 @@ as model judgements would misstate their provenance. Rejected true findings rema
 pending. Revising the quote floor or overlap predicate would require affected boundary
 tests and reevaluation, not simply transferring this result to a new gate.
 
-479
+486
 
 4.4. Policy-Verdict Errors and Sensitivity
 
-488
+495
 
 S-full and S−verifier are identical in these outputs. Widening the region therefore does
 not expose a difference for this cue-driven judge; it cannot establish the effect of scoping a
 generative judge. Table 11 shows the S-full recommendations against the policy-derived
 labels.
 
-480
-481
-482
-483
-484
-485
-486
 487
-
+488
 489
 490
 491
 492
+493
+494
+
+496
+497
+498
+499
 
 Table 11. S-full verdict confusion matrix; rows are expected and columns suggested. All 15 disagreements are under-calls.
 Expected / suggested
@@ -1992,25 +2014,25 @@ clearance.
 
 https://doi.org/10.3390/computers1010000
 
-493
-494
-495
-496
-497
-498
-499
 500
+501
+502
+503
+504
+505
+506
+507
 
-Version November 5, 2026 submitted to Computers
+Version November 6, 2026 submitted to Computers
 
 16 of 23
 
 With expected labels held fixed under the shipped θ = 3 policy, changing the recommendation’s minor threshold gives Table 12. The plateau is conditional on this corpus and
 finding set, not general robustness or a reason to disregard missed blockers.
 
-501
-502
-503
+508
+509
+510
 
 Table 12. Recommendation-threshold sensitivity against the fixed original labels, not against labels
 regenerated under each threshold.
@@ -2045,7 +2067,7 @@ Cohen’s κ
 
 4.5. A Historical Walkthrough and Its Label Boundaries
 
-504
+511
 
 The generated proposal syn-hist-30 concerns a balance-query capability opened to
 third-party channels. Its three gate-confirmed blockers are placeholder concurrency control
@@ -2064,13 +2086,6 @@ these historical labels to keep the analysis version-consistent, but identify th
 discrepancies. Domain-owner adjudication and a new frozen evaluation are required before
 treating a corrected predicate as validated.
 
-505
-506
-507
-508
-509
-510
-511
 512
 513
 514
@@ -2080,19 +2095,28 @@ treating a corrected predicate as validated.
 518
 519
 520
+521
+522
+523
+524
+525
+526
+527
 
 4.6. Development-Team Workflow Evidence (RQ4)
 
-521
+528
 
-The authors report five runs on three private technical proposals: one revised/reviewed again and one resumption run. Only two reviews reached a final
-verdict. Across these runs they report 58 findings: 40 verifier-located, 12 model-judged
-and six operator additions; three of the 12 model-judged submissions were rejected for
-out-of-candidate quotations. They also report 18 decisions (15 accept, three dismiss, no
-rewrite), statistics for 13 rules and 21 exemplars. These categories describe the authors’
-workflow account, not a reconstructed private-store audit or an independent expert study.
-The private source documents, model/prompt configuration and full approval/decision
-trace are not available for independent verification here.
+The wider workflow has handled more than 100 proposals per month for several years
+and accumulated thousands of records, but those operational records lack the run boundaries and consistent labels required for the analysis below. The instrumented evidence is
+therefore five runs on three private technical proposals: one revised/reviewed again and
+one resumption run. Only two reviews reached a final verdict. Across these runs they report
+58 findings: 40 verifier-located, 12 model-judged and six operator additions; three of the 12
+model-judged submissions were rejected for out-of-candidate quotations. They also report
+18 decisions (15 accept, three dismiss, no rewrite), statistics for 13 rules and 21 exemplars.
+These categories describe the authors’ workflow account, not a reconstructed private-store
+audit or an independent expert study. The private source documents, model/prompt configuration and full approval/decision trace are not available for independent verification
+here.
 The account supports feasibility of recording and aggregating feedback in ordinary
 operator-led use. It does not establish verified consent for every record, guaranteed pending
 disposition, reduced workload, independent reviewer acceptance or a learning curve. It
@@ -2101,17 +2125,10 @@ described in Section 3.7. An anonymous trace tying inputs, gate outcomes, dispos
 effective configuration to each final opinion would be needed to strengthen this workflow
 evidence without publishing confidential content.
 
-522
+529
 
 https://doi.org/10.3390/computers1010000
 
-523
-524
-525
-526
-527
-528
-529
 530
 531
 532
@@ -2120,19 +2137,29 @@ https://doi.org/10.3390/computers1010000
 535
 536
 537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
 
-Version November 5, 2026 submitted to Computers
+Version November 6, 2026 submitted to Computers
 
 17 of 23
 
 5. Discussion
 
-538
+548
 
 5.1. Answers to the Research Questions
 RQ1: representation, operational authority, and implementation boundaries.
 
-539
+549
 
 HARK makes review criteria inspectable as rule records with evidence expectations
 and operational routes. The package contains 10 hard, 13 hybrid, and five soft rules; all
@@ -2145,11 +2172,11 @@ but does not enforce the complete target authority contract: gate-confirmed bloc
 affect the suggested verdict, and some hybrid structural failures are produced directly by
 verifiers.
 
-541
+551
 
 RQ2: fixed-corpus detection and verdict trade-offs.
 
-551
+561
 
 The combined S-full configuration produces 168 true positives, no false positives, and
 85 false negatives, compared with 47, 124, and 206 for B0. Micro-F1 increases from 0.222 to
@@ -2168,11 +2195,11 @@ defect; the 30 policy-Pass documents are a different group, including 17 with mi
 No finding is raised on the 13 zero-defect documents. These results describe the specified
 policy and labels, not reliable release decisions in operational use.
 
-552
+562
 
 RQ3: traceability, gate acceptance, and unresolved workload.
 
-568
+578
 
 The flag judge submits 53 hybrid findings, of which 42 pass the gate and 11 fail the
 quotation-length floor. Gate acceptance is 79.2%, not semantic evidence validity. The 43
@@ -2189,22 +2216,13 @@ uncertainty, not an asserted defect. Referral coverage of 80% of misses provides
 that a reviewer read, resolved, or corrected them. A suggested Pass based on eligible
 findings is consequently not equivalent to a completed review.
 
-569
+579
 
 https://doi.org/10.3390/computers1010000
 
-540
-
-542
-543
-544
-545
-546
-547
-548
-549
 550
 
+552
 553
 554
 555
@@ -2213,14 +2231,14 @@ https://doi.org/10.3390/computers1010000
 558
 559
 560
-561
-562
+
 563
 564
 565
 566
 567
-
+568
+569
 570
 571
 572
@@ -2229,26 +2247,38 @@ https://doi.org/10.3390/computers1010000
 575
 576
 577
-578
-579
+
 580
 581
 582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
 
-Version November 5, 2026 submitted to Computers
+Version November 6, 2026 submitted to Computers
 
 18 of 23
 
 RQ4: persistence, approval, and recovery.
 
-583
+593
 
-The reported five development-team runs on three internal proposals, with two reaching a final verdict, provide workflow evidence. The reported 58 findings and subsequent
-statistics and exemplars describe recorded activity, not independently audited quality or
-learning gains. Decision records can be persisted and aggregated without establishing that
-their origin is authenticated or that they improve later reviews. The evaluated final-verdict
-path accepts a reviewer string, and instruction quotations for selected edits are lengthchecked rather than verified as human authorisation. Pending findings can remain when a
-review is finalised.
+The reported five development-team runs on three internal proposals, with two
+reaching a final verdict, provide workflow evidence from a multi-year workflow that
+has accumulated thousands of records; they remain an instrumented sample, not an audit
+of that history. The reported 58 findings and subsequent statistics and exemplars describe
+recorded activity, not independently audited quality or learning gains. Decision records
+can be persisted and aggregated without establishing that their origin is authenticated or
+that they improve later reviews. The evaluated final-verdict path accepts a reviewer string,
+and instruction quotations for selected edits are length-checked rather than verified as
+human authorisation. Pending findings can remain when a review is finalised.
 The authority and recovery gaps extend beyond tier editing. Changes to no-candidate
 behaviour, draft activation, finding severity, and reset can alter effective decision behaviour
 without changing a stored tier. The displayed pack@ver+ovN summary counts overridden
@@ -2257,11 +2287,11 @@ Authenticated approval bound to the action and effective content, control of all
 capabilities demonstrated by this snapshot. The observed counterexamples concern callable
 interfaces and do not establish malicious activity in the internal runs.
 
-584
+594
 
 5.2. Implications for Evidence-Bearing Document Review
 
-600
+611
 
 The useful abstraction is a review record linking a criterion, an evidence object, an
 operational route, and a disposition. This complements comment-generation approaches
@@ -2275,24 +2305,15 @@ Nor does narrow model input eliminate prompt injection or feedback-storage priva
 risks [31,37]. The present evidence supports the architecture’s executable composition and
 its fixed-corpus trade-offs, while exposing the limits that govern its interpretation.
 
-601
+612
 
-585
-586
-587
-588
-589
-590
-591
-592
-593
-594
 595
 596
 597
 598
 599
-
+600
+601
 602
 603
 604
@@ -2302,17 +2323,27 @@ its fixed-corpus trade-offs, while exposing the limits that govern its interpret
 608
 609
 610
-611
-612
+
 613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
 
 6. Limitations and Future Work
 
-614
+625
 
 Developmental synthetic evaluation.
 
-615
+626
 
 The corpus reuses phrase pools and was developed alongside the rule package. Its
 planted labels and expected verdicts reflect the generator and the same policy used for
@@ -2325,47 +2356,46 @@ statistics are descriptive, and no confidence intervals or significance tests ar
 Generalisation would require frozen development artefacts and independently labelled,
 source-separated material.
 
-616
+627
 
 Judge and component attribution.
 
-626
+637
 
 The flag judge reacts to verifier cues rather than interpreting design intent. Its recall
 and precision are neither general lower nor upper bounds for an LLM, which could both
-recover semantic defects and introduce unsupported findings. The end-to-end comparison
 
-627
+638
 
 https://doi.org/10.3390/computers1010000
 
-617
-618
-619
-620
-621
-622
-623
-624
-625
-
 628
 629
+630
+631
+632
+633
+634
+635
+636
 
-Version November 5, 2026 submitted to Computers
+639
+
+Version November 6, 2026 submitted to Computers
 
 19 of 23
 
+recover semantic defects and introduce unsupported findings. The end-to-end comparison
 changes multiple components and does not identify typing’s individual effect. No reported
 experiment establishes cross-model stability, semantic entailment at the gate, or the benefit
 of span scoping for generative judges. Controlled component tests and model-based
 evaluations are possible extensions, not results of this study.
 
-630
+640
 
 Human approval and effective authority.
 
-634
+645
 
 The evaluated implementation assumes a trusted operator-led workflow; it does not
 authenticate human approval through its reviewer-name or instruction-quotation fields.
@@ -2377,11 +2407,11 @@ disposition or waiver of unresolved items. These controls are planned and have n
 implemented or validated here. Their absence limits assurance claims but does not imply
 that the internal runs involved misuse.
 
-635
+646
 
 Version recovery and feedback use.
 
-644
+655
 
 The override-count version label is a display summary, not a unique content identifier.
 It cannot alone reproduce a past review or distinguish different configurations with the
@@ -2391,11 +2421,11 @@ immutable snapshot. Current persistence and aggregation evidence does not establ
 complete historical replay, authenticated attribution of every update, or net benefits from
 feedback. No longitudinal improvement claim is made.
 
-645
+656
 
 Domain, lifecycle, and input coverage.
 
-652
+663
 
 The 28-rule Chinese-language package concerns one organisation’s technical proposal
 review. Hard denotes the snapshot’s automatic route and may use a lexical or structural
@@ -2407,47 +2437,37 @@ require revalidation and, where affected, recomputation; the current metrics can
 reassigned to a revised task. Other languages and document families require their own
 evidence mapping and validation.
 
-653
+664
 
 Workflow evidence and human factors.
 
-663
+674
 
-Three internal documents and five development-team runs, only two carried to a final
-verdict, are insufficient to establish external reviewer acceptance, reduced workload, or
-better decisions. The reported counts are not an independent audit of the private pilot
-store. Pending referral is not human resolution, and agreement between suggested and
-final verdicts is not a direct measure of rubber-stamping. Human disposition quality, time
-costs, missed pending items, and automation bias remain unmeasured. Evaluation of these
-outcomes must also distinguish provisional recommendation from review completion.
+The five instrumented runs on three internal documents, although drawn from a
+multi-year workflow with thousands of records, are insufficient to establish external reviewer acceptance, reduced workload, or better decisions. The reported counts are not
+an independent audit of the private pilot store. Pending referral is not human resolution,
+and agreement between suggested and final verdicts is not a direct measure of rubberstamping. Human disposition quality, time costs, missed pending items, and automation
+bias remain unmeasured. Evaluation of these outcomes must also distinguish provisional
+recommendation from review completion.
 
-664
+675
 
 7. Conclusions
 
-631
-632
-633
-
-636
-637
-638
-639
-640
 641
 642
 643
+644
 
-646
 647
 648
 649
 650
 651
-
+652
+653
 654
-655
-656
+
 657
 658
 659
@@ -2461,25 +2481,34 @@ outcomes must also distinguish provisional recommendation from review completion
 668
 669
 670
-
 671
+672
+673
+
+676
+677
+678
+679
+680
+681
+682
+
+683
 
 HARK represents rule-governed, evidence-bearing document review through explicit
 criteria, operational authority routes, located evidence, provisional findings, and decision
-records. Technical solution proposals are the sole empirical instantiation; assurance cases,
-compliance dossiers, and architecture designs remain potential applications. The system
 
 https://doi.org/10.3390/computers1010000
 
-672
-673
-674
-675
+684
+685
 
-Version November 5, 2026 submitted to Computers
+Version November 6, 2026 submitted to Computers
 
 20 of 23
 
+records. Technical solution proposals are the sole empirical instantiation; assurance cases,
+compliance dossiers, and architecture designs remain potential applications. The system
 contribution is the executable combination of these review objects and interfaces, not a
 guarantee that a model, verifier, or recorded operator name establishes an accountable final
 decision.
@@ -2490,7 +2519,7 @@ quality or online learning benefits. Authenticated approval, a complete effectiv
 ceiling, and content-addressed recovery remain unimplemented target contracts. These
 boundaries define what the present design and validation evidence supports.
 
-676
+686
 
 Author Contributions: Conceptualization, Z.Y.; methodology, Z.Y.; software, Z.Y.; validation, Z.Y., K.W. and Q.W.; formal analysis, Z.Y.; investigation, Z.Y.; resources, H.W.; data
 curation, Z.Y.; writing—original draft preparation, Z.Y.; writing—review and editing, all
@@ -2504,8 +2533,10 @@ personally identifiable information is reported.
 Informed Consent Statement: Not applicable. The three internal proposals and the
 historical expert opinions are confidential organisational records and are reported only in
 aggregate; no individual participant data or identifiable personal information are included.
-Data Availability Statement: The synthetic corpus, generator, judgement traces, evaluation scripts and rule package are available in the artifact repository at https://github.
-com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge, at snapshot b566b08de2976451747215af4dc874a0846f6173. An archived release is available at
+Data Availability Statement: The synthetic corpus, generator, judgement traces,
+evaluation scripts and rule package are available in the artifact repository at https:
+//github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge,
+at snapshot b566b08de2976451747215af4dc874a0846f6173. The repository path retains the project’s original development name. An archived release is available at
 https://doi.org/10.5281/zenodo.23955205 (release v1.0.0, archived at commit cbe1d33,
 MIT licence). The corpus, ground-truth labels, manifest and stored evaluation runs in
 that archive are byte-identical to those of the cited snapshot, so the reported numbers
@@ -2523,25 +2554,13 @@ were checked against the source material by the authors, who take full responsib
 the content of this publication.
 Conflicts of Interest: The authors declare no conflicts of interest. All authors are affiliated
 with the organisation whose technical proposal review provides the empirical setting of this
-study; the evaluation uses synthetic proposals and aggregated internal workflow records
-and reports no business outcomes.
 
-688
+700
 
 https://doi.org/10.3390/computers1010000
 
-677
-678
-679
-680
-681
-682
-683
-684
-685
-686
 687
-
+688
 689
 690
 691
@@ -2553,7 +2572,7 @@ https://doi.org/10.3390/computers1010000
 697
 698
 699
-700
+
 701
 702
 703
@@ -2578,10 +2597,24 @@ https://doi.org/10.3390/computers1010000
 722
 723
 724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
 
-Version November 5, 2026 submitted to Computers
+Version November 6, 2026 submitted to Computers
 
 21 of 23
+
+study; the evaluation uses synthetic proposals and aggregated internal workflow records
+and reports no business outcomes.
 
 References
 1.
@@ -2615,9 +2648,10 @@ References
 
 18.
 
-19.
+736
+737
 
-725
+738
 
 Fagan, M.E. Design and Code Inspections to Reduce Errors in Program Development. IBM Syst.
 J. 1976, 15, 182–211. https://doi.org/10.1147/sj.153.0182
@@ -2661,25 +2695,9 @@ Inf. Syst. 2025, 43, 42. https://doi.org/10.1145/3703155
 Liu, N.F.; Lin, K.; Hewitt, J.; Paranjape, A.; Bevilacqua, M.; Petroni, F.; et al. Lost in the Middle:
 How Language Models Use Long Contexts. Trans. Assoc. Comput. Linguist. 2024, 12, 157–173.
 https://doi.org/10.1162/tacl_a_00638
-Huang, J.; Chen, X.; Mishra, S.; Zheng, H.S.; Yu, A.W.; Song, X.; et al. Large Language Models
-Cannot Self-Correct Reasoning Yet. In Proceedings of the Twelfth International Conference on
-Learning Representations (ICLR 2024), Vienna, Austria, 2024.
 
 https://doi.org/10.3390/computers1010000
 
-726
-727
-728
-729
-730
-731
-732
-733
-734
-735
-736
-737
-738
 739
 740
 741
@@ -2720,8 +2738,20 @@ https://doi.org/10.3390/computers1010000
 776
 777
 778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
 
-Version November 5, 2026 submitted to Computers
+Version November 6, 2026 submitted to Computers
+
+19.
 
 20.
 
@@ -2755,6 +2785,9 @@ Version November 5, 2026 submitted to Computers
 
 22 of 23
 
+Huang, J.; Chen, X.; Mishra, S.; Zheng, H.S.; Yu, A.W.; Song, X.; et al. Large Language Models
+Cannot Self-Correct Reasoning Yet. In Proceedings of the Twelfth International Conference on
+Learning Representations (ICLR 2024), Vienna, Austria, 2024.
 Djouvas, C.; Andreou, C.; Voutsa, M.C.; Tsapatsoulis, N. Model-Contingent Polarity Bias in
 Large Language Model Annotation: Implications for Semantic Multimedia Personalization.
 Computers 2026, 15, 262. https://doi.org/10.3390/computers15050262
@@ -2807,21 +2840,9 @@ Zhang, J.; Hu, S.; Lu, C.; Lange, R.; Clune, J. Darwin Gödel Machine: Open-Ende
 Self-Improving Agents. arXiv 2025, arXiv:2505.22954.
 Wang, B.; He, W.; Zeng, S.; Xiang, Z.; Xing, Y.; Tang, J.; et al. Unveiling Privacy Risks in LLM
 Agent Memory. In Proceedings of the 63rd Annual Meeting of the Association for Computational
-Linguistics (ACL 2025), Vienna, Austria, 2025; pp. 25241–25260. https://doi.org/10.18653/v1
-/2025.acl-long.1227
 
 https://doi.org/10.3390/computers1010000
 
-779
-780
-781
-782
-783
-784
-785
-786
-787
-788
 789
 790
 791
@@ -2866,27 +2887,6 @@ https://doi.org/10.3390/computers1010000
 830
 831
 832
-
-Version November 5, 2026 submitted to Computers
-
-38.
-39.
-
-40.
-41.
-
-23 of 23
-
-Mermaid: Generation of Diagrams and Flowcharts from Text.
-Available online:
-https://mermaid.js.org (accessed on 30 October 2026).
-HARK: Human-Gated Authority-Typed Review Knowledge—Artifact Repository for This Paper. Available online: https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-TypedReview-Knowledge (accessed on 4 November 2026).
-Cohen, J. A Coefficient of Agreement for Nominal Scales. Educ. Psychol. Meas. 1960, 20, 37–46.
-https://doi.org/10.1177/001316446002000104
-Landis, J.R.; Koch, G.G. The Measurement of Observer Agreement for Categorical Data. Biometrics 1977, 33, 159–174. https://doi.org/10.2307/2529310
-
-https://doi.org/10.3390/computers1010000
-
 833
 834
 835
@@ -2896,4 +2896,40 @@ https://doi.org/10.3390/computers1010000
 839
 840
 841
+842
+843
+
+Version November 6, 2026 submitted to Computers
+
+38.
+39.
+
+40.
+41.
+
+23 of 23
+
+Linguistics (ACL 2025), Vienna, Austria, 2025; pp. 25241–25260. https://doi.org/10.18653/v1
+/2025.acl-long.1227
+Mermaid: Generation of Diagrams and Flowcharts from Text.
+Available online:
+https://mermaid.js.org (accessed on 30 October 2026).
+HARK: Human-Accountable Review Knowledge—Artifact Repository for This Paper. Available online: https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-ReviewKnowledge (accessed on 4 November 2026).
+Cohen, J. A Coefficient of Agreement for Nominal Scales. Educ. Psychol. Meas. 1960, 20, 37–46.
+https://doi.org/10.1177/001316446002000104
+Landis, J.R.; Koch, G.G. The Measurement of Observer Agreement for Categorical Data. Biometrics 1977, 33, 159–174. https://doi.org/10.2307/2529310
+
+https://doi.org/10.3390/computers1010000
+
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
 
