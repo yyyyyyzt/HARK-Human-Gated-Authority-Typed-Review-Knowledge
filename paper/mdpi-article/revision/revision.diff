@@ -33,8 +33,8 @@
  
 -\Author{Author A $^{1}$\orcidA{}, Author B $^{1}$\orcidB{}, Author C $^{1}$\orcidC{}, Author D $^{1}$\orcidD{}, Author E $^{1}$\orcidE{}, Author F $^{1}$\orcidF{}}
 -\AuthorNames{Author A, Author B, Author C, Author D, Author E and Author F}
-+\Author{Zhitong Yang $^{1}$\orcidA{}, Kai Wang $^{1}$, Qingxian Wang $^{1}$, Qi Li $^{1}$, Lin Song $^{1}$, Dahai Jin $^{1}$, Hong Wang $^{1}$}
-+\AuthorNames{Zhitong Yang, Kai Wang, Qingxian Wang, Qi Li, Lin Song, Dahai Jin and Hong Wang}
++\Author{Zhitong Yang $^{1}$\orcidA{}, Qingxian Wang $^{1}$, Kai Wang $^{1}$, Qi Li $^{1}$, Lin Song $^{1}$, Dahai Jin $^{1}$, Hong Wang $^{1}$}
++\AuthorNames{Zhitong Yang, Qingxian Wang, Kai Wang, Qi Li, Lin Song, Dahai Jin and Hong Wang}
  \address{%
 -$^{1}$ \quad Digital Technology Department, Example Utility Company, Beijing 100000, China; author.a@example.com (A.); author.b@example.com (B.); author.c@example.com (C.); author.d@example.com (D.); author.e@example.com (E.); author.f@example.com (F.)}
 -\corres{Correspondence: author.a@example.com}

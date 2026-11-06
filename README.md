@@ -76,9 +76,10 @@ an LLM adapter (`--adapter ./your-adapter.mjs`) or online expert feedback.
 
 The manuscript source is `paper/mdpi-article/main.tex`; it compiles with two `pdflatex` passes (no
 BibTeX: all 41 references are inline `\bibitem`s). See `paper/mdpi-article/README.md` for the exact
-command, the validation record and the list of items that still need author confirmation (each
-author's CRediT role, and domain review of two historical hard predicates); the Zenodo metadata
-correction has its own runbook in `paper/zenodo/README.md`. The Chinese
+command, the validation record and the items that still need author confirmation (each author's
+CRediT role, and domain review of two historical hard predicates). The Zenodo metadata was corrected
+in place on 2026-11-05 and `paper/zenodo/verify.sh` passes; the runbook remains in
+`paper/zenodo/README.md`. The Chinese
 digest in `paper/mdpi-submission/zh-translation.md` mirrors the manuscript section by section.
 
 ## Install the plugin (optional)

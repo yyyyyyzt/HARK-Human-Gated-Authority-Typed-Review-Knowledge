@@ -2,7 +2,7 @@ Article
 
 HARK: Authority-Typed Review Knowledge for
 Evidence-Bearing Document Review
-Zhitong Yang 1 , Kai Wang 1 , Qingxian Wang 1 , Qi Li 1 , Lin Song 1 , Dahai Jin 1 , Hong Wang 1
+Zhitong Yang 1 , Qingxian Wang 1 , Kai Wang 1 , Qi Li 1 , Lin Song 1 , Dahai Jin 1 , Hong Wang 1
 1
 
 *

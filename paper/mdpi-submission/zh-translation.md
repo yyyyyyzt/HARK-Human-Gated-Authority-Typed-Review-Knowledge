@@ -10,7 +10,7 @@
 **HARK：面向证据承载文档评审的操作权限分型评审知识**
 （HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review）
 
-作者：Zhitong Yang（通讯，ORCID 0009-0002-1803-1529）、Kai Wang、Qingxian Wang、Qi Li、Lin Song、Dahai Jin、Hong Wang
+作者：Zhitong Yang（通讯，ORCID 0009-0002-1803-1529）、Qingxian Wang、Kai Wang、Qi Li、Lin Song、Dahai Jin、Hong Wang
 单位：State Grid Customer Service Center, Tianjin 300300, China
 通讯邮箱：yyyyyyzt@tju.edu.cn
 

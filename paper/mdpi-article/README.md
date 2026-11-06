@@ -12,9 +12,9 @@
 
 | 文件 | 说明 |
 |---|---|
-| `main.tex` | 唯一源文件（89,863 B，sha256 `fceac957…`）。`\documentclass[computers,article,submit,moreauthors]{Definitions/mdpi}`；7 个一级节、12 表、2 幅 TikZ 图、1 段算法伪代码、41 条文献（全部内联 `\bibitem`，不再 `\input{bib.tex}`） |
-| `main.pdf` | 权威编译产物（23 页 A4，约 11.8k 词，257,667 B，sha256 `1968b6a2…`，pdfTeX 1.40.25，0 Overfull） |
-| `main.zip` | 投稿源码包（19 个文件，含 `Definitions/` 与修订记录，985,915 B，sha256 `28b1615a…`），直接上传 MDPI 系统 |
+| `main.tex` | 唯一源文件（89,863 B，sha256 `da5eeef0…`）。`\documentclass[computers,article,submit,moreauthors]{Definitions/mdpi}`；7 个一级节、12 表、2 幅 TikZ 图、1 段算法伪代码、41 条文献（全部内联 `\bibitem`，不再 `\input{bib.tex}`） |
+| `main.pdf` | 权威编译产物（23 页 A4，约 11.8k 词，257,666 B，sha256 `07a41dcb…`，pdfTeX 1.40.25，0 Overfull） |
+| `main.zip` | 投稿源码包（19 个文件，含 `Definitions/` 与修订记录，986,216 B，sha256 `5d7a2cc9…`），直接上传 MDPI 系统 |
 | `Definitions/` | MDPI 官方类文件与参考文献样式。`mdpi.cls` 仅改 2 处 logo 引用（EPS → `logo-mdpi-eps-converted-to.pdf`），避免编译时依赖 shell-escape 的 EPS 转换 |
 | `revision/` | 本轮修订的可复核证据：统一差异、机器可读替换账本、验证报告、修订记录、最终一致性复核、基线稿、编译日志与页面预览 |
 | `build.sh` | 本机编译脚本（`pdflatex` 两遍；`epstopdf` 仅在缺 logo PDF 时执行） |
@@ -37,7 +37,7 @@ pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode 
 
 ## 当前状态（2026-11-05，可投稿的**文字稿**）
 
-- **作者区**：Zhitong Yang（通讯，ORCID `0009-0002-1803-1529`）、Kai Wang、Qingxian Wang、Qi Li、Lin Song、Dahai Jin、Hong Wang；State Grid Customer Service Center, Tianjin 300300, China；通讯邮箱仅 `yyyyyyzt@tju.edu.cn`。其余 6 位不显示空 ORCID 图标（模板会为每个 `\orcidauthor` 画图标，故删除定义而非留空）。
+- **作者区**：Zhitong Yang（通讯，ORCID `0009-0002-1803-1529`）、Qingxian Wang、Kai Wang、Qi Li、Lin Song、Dahai Jin、Hong Wang；State Grid Customer Service Center, Tianjin 300300, China；通讯邮箱仅 `yyyyyyzt@tju.edu.cn`。其余 6 位不显示空 ORCID 图标（模板会为每个 `\orcidauthor` 画图标，故删除定义而非留空）。
 - **七项声明**全部为作者确认的真实内容：完整 CRediT 14 项、no external funding、IRB / Informed Consent 为 Not applicable 并说明是内部评审文档、Data Availability 写仓库快照 `b566b08` + Zenodo DOI `10.5281/zenodo.23955205`（归档提交 `cbe1d33`，快照在其后三个提交：DOI 写入、引语校验、发布说明）、Generative AI 披露（DeepSeek Harness + DeepSeek 模型，2026-11 使用，未生成任何实验结论）、无利益冲突并披露全员隶属被评审组织。
 - **主张边界**：只报已跑出的确定性结果（micro-F1 0.798 vs 关键词基线 0.222、零假阳性、κ=0.763、85 处漏检分解、pending 932 对、gate 42/53）；LLM-judge 配置、独立专家、跨文档族泛化、学习增益均写成未做。
 - **未实现契约**（正文明确标注，不声称保证）：认证式人工批准、覆盖全部写入口的有效权限上限、内容寻址的配置快照与恢复、pending 逐项处置后才允许签署。
@@ -50,7 +50,7 @@ pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode 
 | `README.md` | 修订包自带说明（构建方式、最终状态、not claimed） |
 | `revision.diff` | 相对上传基线 `original-main.tex` 的完整统一差异 |
 | `original-main.tex` | 本轮基线（= 原 `paper/mdpi-article/main.tex`，sha256 `ff4a08…`），可据此复算 diff |
-| `editorial-patch-manifest.json` | 机器可读的逐处替换账本（29 条编辑补丁 + 31 条偏移校订可复算至 `df1ab8a9…`；作者确认后的最终稿与 2026-11-05 两条 amendment 另记） |
+| `editorial-patch-manifest.json` | 机器可读的逐处替换账本（29 条编辑补丁 + 31 条偏移校订可复算至 `df1ab8a9…`；作者确认后的最终稿与 2026-11-05 三条 amendment 另记） |
 | `revision-validation.json` | 校验记录：哈希、页数、引用闭合、环境配平、编译结果 |
 | `修改记录.md` | 中文修订记录：定位/重构、数值口径纠正、34 项答复逐项处置、仍属目标契约的清单 |
 | `final-consistency-review.md` | 最终一致性复核（模型辅助、角色分离，非独立人工复核） |
@@ -74,5 +74,5 @@ pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode 
 ## 投稿前仍需人确认
 
 1. **CRediT 已按作者确认的分工重排**：Z.Y. 承担 Conceptualization、Methodology、Software、Formal Analysis、Investigation、Data Curation、Writing—Original Draft、Visualization、Project Administration；K.W. 与 Q.W. 为 Validation；H.W. 另担 Resources 与 Supervision；其余作者为 Writing—Review & Editing。投稿前请每位作者确认自己的角色。
-2. **Zenodo 元数据**：归档文件不可改，但已发布记录的元数据仍是占位作者与旧题；按 `paper/zenodo/README.md` 在原记录上改元数据（保留 DOI），无需发 v1.1.0。正文已如实写归档提交 `cbe1d33` 与快照的三个提交差。
+2. **Zenodo 元数据（已完成）**：2026-11-05 在原记录 23955205 上修正，DOI 不变；标题、7 位作者顺序与单位、发布日期、描述、7 个关键词、归档提交关联均已对齐，`paper/zenodo/verify.sh` 全项通过。归档文件未改。正文已如实写归档提交 `cbe1d33` 与快照的三个提交差。
 3. MON-001 / DOC-001 / hard 谓词建议在录用前由领域负责人复核（正文已把 hard 定位为解析器可见的代理，而非业务充分性判定）。

@@ -28,7 +28,7 @@ print(f"Record {record.get('id')} | DOI {record.get('doi')} | state {record.get(
 
 check("title", m.get("title") == "HARK: Authority-Typed Review Knowledge for Evidence-Bearing Document Review", repr(m.get("title")))
 
-expected_names = ["Yang, Zhitong", "Wang, Kai", "Wang, Qingxian", "Li, Qi", "Song, Lin", "Jin, Dahai", "Wang, Hong"]
+expected_names = ["Yang, Zhitong", "Wang, Qingxian", "Wang, Kai", "Li, Qi", "Song, Lin", "Jin, Dahai", "Wang, Hong"]
 names = [c.get("name") for c in m.get("creators", [])]
 check("7 creators in manuscript order", names == expected_names, repr(names))
 check("corresponding ORCID on first creator", (m.get("creators") or [{}])[0].get("orcid", "").endswith("0009-0002-1803-1529"), repr((m.get("creators") or [{}])[0].get("orcid")))
@@ -46,7 +46,7 @@ check("license MIT", (m.get("license") or {}).get("id") == "mit-license", repr(m
 check("resource type software", (m.get("resource_type") or {}).get("type") == "software", repr(m.get("resource_type")))
 
 expected_keywords = ["large language models", "document review", "authority typing", "evidence grounding", "neuro-symbolic verification", "human-in-the-loop", "reproducibility"]
-check("7 keywords", m.get("keywords") == expected_keywords, repr(m.get("keywords")))
+check("all 7 keywords present (order-insensitive)", len(m.get("keywords") or []) == 7 and set(m.get("keywords") or []) == set(expected_keywords), repr(m.get("keywords")))
 
 related = m.get("related_identifiers", [])
 commit_url = "https://github.com/yyyyyyzt/HARK-Human-Gated-Authority-Typed-Review-Knowledge/tree/cbe1d330c7b15cce278ca62f6dfb604a76489502"

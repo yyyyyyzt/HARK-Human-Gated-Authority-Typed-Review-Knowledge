@@ -1,7 +1,7 @@
 {
   "scope": "Editorial manuscript checks only; no ARS certification or submission approval",
   "source_sha256": "ff4a080292c880f2d4d32484c5811865bd4471c301656846db93fd3401a49313",
-  "final_sha256": "fceac957ed946517ec1272c268ff427d4a97853edad5b1a2540e1e430ef1683f",
+  "final_sha256": "da5eeef0c7af2e72bd51089161e9b1d68f58b487352eb8902af4cf24505a5d50",
   "protected_inputs": [
     {
       "role": "initial_review",
@@ -45,7 +45,7 @@
     "engine": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)",
     "exit_code": 0,
     "pdf_pages": 23,
-    "pdf_sha256": "1968b6a248de44358d5ce4dcb40bc0500301a9563c3d528531f2a310cab1f234",
+    "pdf_sha256": "07a41dcba0c2d390b3d9a1da798c145fa9a4e17657f2bb669a763624d2207c05",
     "undefined_citation_or_reference_warning": false,
     "overfull_boxes": 0,
     "remaining_warnings": "underfull boxes and legacy lineno.sty encoding warning",
@@ -67,7 +67,7 @@
   ],
   "author_identity_finalized": true,
   "pre_submission_edits": {
-    "author_block": "Zhitong Yang (corresponding, ORCID 0009-0002-1803-1529), Kai Wang, Qingxian Wang, Qi Li, Lin Song, Dahai Jin, Hong Wang; affiliation State Grid Customer Service Center, Tianjin 300300, China; corresponding e-mail yyyyyyzt@tju.edu.cn only",
+    "author_block": "Zhitong Yang (corresponding, ORCID 0009-0002-1803-1529), Qingxian Wang, Kai Wang, Qi Li, Lin Song, Dahai Jin, Hong Wang; affiliation State Grid Customer Service Center, Tianjin 300300, China; corresponding e-mail yyyyyyzt@tju.edu.cn only",
     "declarations": "seven [AUTHOR CONFIRMATION REQUIRED] placeholders replaced with author-supplied statements: CRediT contributions, no external funding, IRB/consent not applicable, data availability with snapshot and archive DOI, generative-AI disclosure, no conflicts of interest",
     "framing": "host-independent engine plus thin host integration described as a design position; engine imports no host modules",
     "removed_meta_text": [
@@ -80,7 +80,8 @@
   "declarations_split": "Acknowledgments and generative-AI disclosure are separate back-matter statements, as MDPI requires",
   "post_revision_amendments": [
     "author-credit-reallocation-2026-11-05",
-    "archive-commit-correction-2026-11-05"
+    "archive-commit-correction-2026-11-05",
+    "author-order-correction-2026-11-05"
   ],
-  "exact_patch_replay_scope": "the 29 editorial patches and 31 offset copyedits reproduce the manifest output_sha256; author-confirmed declaration finalization and the two 2026-11-05 amendments were applied afterwards"
+  "exact_patch_replay_scope": "the 29 editorial patches and 31 offset copyedits reproduce the manifest output_sha256; author-confirmed declaration finalization and the three 2026-11-05 amendments (CRediT, archive commit, author order) were applied afterwards"
 }

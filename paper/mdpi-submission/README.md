@@ -12,6 +12,7 @@
 | 文件 | 用途 | 状态 |
 |---|---|---|
 | [`cover-letter.md`](cover-letter.md) | 投稿系统的 cover letter 正文（英文），含贡献、有界证据与 target contracts 声明 | 2026-11-05 按 23 页修订稿重写；**发布前须作者通读**，尤其不要改回旧题的「human-gated」表述 |
+| [`cover-letter.pdf`](cover-letter.pdf) | 上述正文的 A4 单页 PDF（10.5pt Times，1 页），可直接上传投稿系统 | 2026-11-05 生成，sha256 `a7eaed87…` |
 | [`submission-drafts.md`](submission-drafts.md) | 上传清单、Section/Topic 对齐、补充材料 caption、图形摘要说明、三条禁写、投稿前人工确认项 | 与修订稿同步 |
 | [`zh-translation.md`](zh-translation.md) | 修订稿的中文逐节压缩译述（含全部结果数字与新口径），供内部审阅与单位备案 | **非投稿件**；正式投稿只用英文 |
 | [`graphical-abstract.tex`](graphical-abstract.tex) / [`graphical-abstract.png`](graphical-abstract.png) | 图形摘要（1100×560 PNG，投稿系统单独上传） | 2026-11-05 重新生成：`Typed rules, located evidence, accountable disposition` |
@@ -34,7 +35,7 @@
 ## 投稿前仍需人确认
 
 1. **CRediT 已按作者确认的分工重排**（`main.tex` 声明区）：Z.Y. 主导概念、方法、软件、分析、调查、数据、初稿、可视化与项目管理；K.W.、Q.W. 为 Validation；H.W. 另担 Resources 与 Supervision；其余作者仅 Writing—Review & Editing。投稿前请每位作者确认自己的角色。
-2. **Zenodo 元数据**：归档文件不可改；已发布记录的元数据仍是占位作者与旧题，按 [`../zenodo/README.md`](../zenodo/README.md) 在原记录上改（保留 DOI），无需发 v1.1.0。正文写归档提交 `cbe1d33`，快照在其后三个提交。
+2. **Zenodo 元数据（已完成）**：2026-11-05 在原记录 23955205 上修正，DOI 不变；标题、7 位作者顺序与单位、发布日期、描述、7 个关键词、归档提交关联均已对齐，[`../zenodo/verify.sh`](../zenodo/verify.sh) 全项通过。归档文件未改。正文写归档提交 `cbe1d33`，快照在其后三个提交。
 3. **MON-001 / DOC-001 / hard 谓词**的领域复核（§4.5 已把这些写成解析器可见代理，而非业务充分性判定）。
 4. **建议审稿人**：cover letter 未列，投稿系统里按 MDPI 要求填写（避免与作者同机构、近三年合作者）。
 5. 系统字段：文章号/卷期/日期留空由编辑部填写；版权协议选 CC BY 4.0；ORCID 仅通讯作者展示。

@@ -1,6 +1,6 @@
-# Zenodo：需要你做的唯一一件事
+# Zenodo：元数据修正记录与复核手册
 
-Zenodo 上已发布的记录 **23955205**（DOI `10.5281/zenodo.23955205`）里，**文件是对的，元数据是错的**：作者还是 `Author A`–`Author F`，标题和描述还是旧的 “human-gated / plugin” 口径。Zenodo 的归档文件不可修改，但**已发布记录的元数据可以在线更正，DOI 保持不变**。不需要发 v1.1.0。
+**状态（2026-11-05）：已完成。** 记录 **23955205**（DOI `10.5281/zenodo.23955205`）的元数据已在原记录上修正，`./verify.sh` 全项通过；归档文件（1,814,296 B，md5 `02c7e7209d78259ed3207dfb7a5ac415`）未改，DOI 不变。以下步骤保留为操作记录，供未来元数据漂移时复核。
 
 本目录的文件：
 
@@ -51,8 +51,8 @@ curl -sS https://zenodo.org/api/records/23955205 -o /tmp/zenodo-before.json
 | # | Family name | Given name | ORCID | Affiliation |
 |---|---|---|---|---|
 | 1 | Yang | Zhitong | `0009-0002-1803-1529` | State Grid Customer Service Center, Tianjin 300300, China |
-| 2 | Wang | Kai | 留空 | State Grid Customer Service Center, Tianjin 300300, China |
-| 3 | Wang | Qingxian | 留空 | State Grid Customer Service Center, Tianjin 300300, China |
+| 2 | Wang | Qingxian | 留空 | State Grid Customer Service Center, Tianjin 300300, China |
+| 3 | Wang | Kai | 留空 | State Grid Customer Service Center, Tianjin 300300, China |
 | 4 | Li | Qi | 留空 | State Grid Customer Service Center, Tianjin 300300, China |
 | 5 | Song | Lin | 留空 | State Grid Customer Service Center, Tianjin 300300, China |
 | 6 | Jin | Dahai | 留空 | State Grid Customer Service Center, Tianjin 300300, China |
